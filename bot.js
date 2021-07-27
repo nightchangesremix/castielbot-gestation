@@ -67,7 +67,7 @@ client.on('message', (receivedMessage) => {
     }
     else if (receivedMessage.content.toLowerCase().includes('chuck')) {
         receivedMessage.channel.send("Fuck that guy!")
-        
+    } 
     else if (receivedMessage.content.toLowerCase().includes('sam')) {
         receivedMessage.channel.send("That's my bloodfreak-in-law!")
     }
