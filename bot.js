@@ -96,9 +96,7 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes('cas')) {
         var reply = Math.floor(Math.random() * 50)
         if (reply != 0 && reply != 1 && reply != 2 && reply != 3) {
-//             const angel = client.emojis.find(emoji => emoji.name === "angel");
-//             receivedMessage.channel.send(`${angel}`)
-               receivedMessage.channel.send("\:angel:")
+               receivedMessage.channel.send("👼")
         }
         if (reply == 0) {
             const attachment = new Discord.Attachment("https://imgur.com/a/2ItxzpK")
