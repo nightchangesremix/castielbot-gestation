@@ -173,9 +173,37 @@ function helpCommand(arguments, receivedMessage) {
     }
     
     if (arguments == "feel") { 
-        randomfeel()
-        receivedMessage.channel.send(feel)
-        
+        var feel = Math.floor(Math.random() * 10)
+        if (feel == 0) {
+            receivedMessage.channel.send("I feel like murder is okay.")
+        }
+        if (feel == 1) {
+            receivedMessage.channel.send("I feel like the poorest of little meow meows :(")
+        }
+        if (feel == 2) { 
+            receivedMessage.channel.send("I'm not o-fucking-kay!!!")
+        }
+        if (feel == 3) {
+            receivedMessage.channel.send("I'm inconsolably horny :/") 
+        }
+        if (feel == 4) {
+            receivedMessage.channel.send("I'm feeling petite and fertile. Submissive and breedable, even.")
+        }
+        if (feel == 5) {
+            receivedMessage.channel.send("ERROR CODE 36404: FILENAME 'EMOTIONS' NOT FOUND.")
+        }
+        if (feel == 6) {
+            receivedMessage.channel.send("I'm just a man in love! I can't be held responsible for my actions!")
+        }
+        if (feel == 7) {
+            receivedMessage.channel.send("I think I'm gay.")
+        }
+        if (feel == 8) {
+            receivedMessage.channel.send("I don't know how I feel, I'm waiting for Dean to tell me.")
+        }
+        if (feel == 9) {
+            receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
+        }
     }
            
         
@@ -338,39 +366,6 @@ function helpCommand(arguments, receivedMessage) {
     }
 }
 
-function randomfeel() {
-    var feel = Math.floor(Math.random() * 10)
-        if (feel == 0) {
-            receivedMessage.channel.send("I feel like murder is okay.")
-        }
-        if (feel == 1) {
-            receivedMessage.channel.send("I feel like the poorest of little meow meows :(")
-        }
-        if (feel == 2) { 
-            receivedMessage.channel.send("I'm not o-fucking-kay!!!")
-        }
-        if (feel == 3) {
-            receivedMessage.channel.send("I'm inconsolably horny :/") 
-        }
-        if (feel == 4) {
-            receivedMessage.channel.send("I'm feeling petite and fertile. Submissive and breedable, even.")
-        }
-        if (feel == 5) {
-            receivedMessage.channel.send("ERROR CODE 36404: FILENAME 'EMOTIONS' NOT FOUND.")
-        }
-        if (feel == 6) {
-            receivedMessage.channel.send("I'm just a man in love! I can't be held responsible for my actions!")
-        }
-        if (feel == 7) {
-            receivedMessage.channel.send("I think I'm gay.")
-        }
-        if (feel == 8) {
-            receivedMessage.channel.send("I don't know how I feel, I'm waiting for Dean to tell me.")
-        }
-        if (feel == 9) {
-            receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
-        }
-}
     
 function randomspeak() {
     var talk2 = Math.floor(Math.random() * 102)
