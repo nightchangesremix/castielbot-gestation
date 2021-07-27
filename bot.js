@@ -171,38 +171,11 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon.\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\nYou can also make me say anything you want by typing 'cas say' and I respond to my own name (plus a few others)!")
     }
-    if (arguments = "feel") { 
-        var feel = Math.floor(Math.random() * 10)
-        if (feel == 0) {
-            receivedMessage.channel.send("I feel like murder is okay.")
-        }
-        if (feel == 1) {
-            receivedMessage.channel.send("I feel like the poorest of little meow meows :(")
-        }
-        if (feel == 2) { 
-            receivedMessage.channel.send("I'm not o-fucking-kay!!!")
-        }
-        if (feel == 3) {
-            receivedMessage.channel.send("I'm inconsolably horny :/") 
-        }
-        if (feel == 4) {
-            receivedMessage.channel.send("I'm feeling petite and fertile. Submissive and breedable, even.")
-        }
-        if (feel == 5) {
-            receivedMessage.channel.send("ERROR CODE 36404: FILENAME 'EMOTIONS' NOT FOUND.")
-        }
-        if (feel == 6) {
-            receivedMessage.channel.send("I'm just a man in love! I can't be held responsible for my actions!")
-        }
-        if (feel == 7) {
-            receivedMessage.channel.send("I think I'm gay.")
-        }
-        if (feel == 8) {
-            receivedMessage.channel.send("I don't know how I feel, I'm waiting for Dean to tell me.")
-        }
-        if (feel == 9) {
-            receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
-        }
+    
+    if (arguments == "feel") { 
+        randomfeel()
+        receivedMessage.channel.send(randomfeel)
+        
     }
            
         
@@ -365,6 +338,40 @@ function helpCommand(arguments, receivedMessage) {
     }
 }
 
+function randomfeel() {
+    var feel = Math.floor(Math.random() * 10)
+        if (feel == 0) {
+            receivedMessage.channel.send("I feel like murder is okay.")
+        }
+        if (feel == 1) {
+            receivedMessage.channel.send("I feel like the poorest of little meow meows :(")
+        }
+        if (feel == 2) { 
+            receivedMessage.channel.send("I'm not o-fucking-kay!!!")
+        }
+        if (feel == 3) {
+            receivedMessage.channel.send("I'm inconsolably horny :/") 
+        }
+        if (feel == 4) {
+            receivedMessage.channel.send("I'm feeling petite and fertile. Submissive and breedable, even.")
+        }
+        if (feel == 5) {
+            receivedMessage.channel.send("ERROR CODE 36404: FILENAME 'EMOTIONS' NOT FOUND.")
+        }
+        if (feel == 6) {
+            receivedMessage.channel.send("I'm just a man in love! I can't be held responsible for my actions!")
+        }
+        if (feel == 7) {
+            receivedMessage.channel.send("I think I'm gay.")
+        }
+        if (feel == 8) {
+            receivedMessage.channel.send("I don't know how I feel, I'm waiting for Dean to tell me.")
+        }
+        if (feel == 9) {
+            receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
+        }
+}
+    
 function randomspeak() {
     var talk2 = Math.floor(Math.random() * 102)
         if (talk2 == 0) {
