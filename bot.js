@@ -290,7 +290,14 @@ function helpCommand(arguments, receivedMessage) {
 //             usersend = usersend.split("@")[1].split(">")[0]
 //         }
         receivedMessage.channel.send("You, " + usersend + ", have exactly " + bde + "% big dick energy!")
+        
     }
+    
+    if (arguments == "bhe") {
+        var bhe = Math.floor(Math.random() * 101)
+        var usersend = receivedMessage.author.toString()
+        receivedMessage.channel.send("You, " + usersend + ", have exactly " + bde + "% big hole energy!)
+                                     }
     if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
         if (valid == 0) {
@@ -361,8 +368,8 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments != "feel" && arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
-        receivedMessage.channel.send("invalid command. beep boop.")
+    if (arguments != "bhe" && arguments != "feel" && arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
+        receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
     }
 }
 
