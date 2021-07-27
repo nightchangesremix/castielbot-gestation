@@ -90,7 +90,7 @@ client.on('message', (receivedMessage) => {
 //           stringargument = stringargument.split(',').join(newchar)
 //           receivedMessage.channel.send(stringargument)
 //         }
- //   }
+    }
     // else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
         // var feelings = Math.floor(Math.random() * 3)
         // if (feelings == 0) {
