@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = ODY5MzkxODA1NzAyMTA3MTY2.YP9iNg.NZK-Ixm-JxKEqKwyL49hfvAmLNU
+const token = process.env.DISCORD_BOT_SECRET;
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
