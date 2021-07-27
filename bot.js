@@ -90,22 +90,22 @@ client.on('message', (receivedMessage) => {
 //           stringargument = stringargument.split(',').join(newchar)
 //           receivedMessage.channel.send(stringargument)
 //         }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
-        var feelings = Math.floor(Math.random() * 3)
-        if (feelings == 0) {
-            randomspeak()
-            receivedMessage.channel.send(speak)
-        }
-        if (feelings == 1) {
-            randomsent()
-            receivedMessage.channel.send(sent)
-        }
-        if (feelings == 2) {
-            randomimg()
-            receivedMessage.channel.send(webAttachment)
-        }
-    }
+ //   }
+    // else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
+        // var feelings = Math.floor(Math.random() * 3)
+        // if (feelings == 0) {
+           // randomspeak()
+            //receivedMessage.channel.send(speak)
+        //}
+        //if (feelings == 1) {
+         //   randomsent()
+           // receivedMessage.channel.send(sent)
+        //}
+        // if (feelings == 2) {
+           // randomimg()
+            //receivedMessage.channel.send(webAttachment)
+        //}
+    // }
     else if (receivedMessage.content.toLowerCase().includes('cas')) {
         var reply = Math.floor(Math.random() * 50)
         if (reply != 0 && reply != 1 && reply != 2 && reply != 3) {
