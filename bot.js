@@ -71,25 +71,12 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
         let splitsaying = fullsaying.split(" ")
-        //if (receivedMessage.content.startsWith("cas say")) {
         let argumentsaying = splitsaying.slice(2)
         let stringargument = argumentsaying.toString()
         let newchar = ' '
         stringargument = stringargument.split(',').join(newchar)
         receivedMessage.channel.send(stringargument)
 
-        //}
-//         else {
-//           let i = 0
-//           while (splitsaying[i] != "cas") {
-//             i++
-//           }
-//           splitsaying.splice(0, i+2)
-//           let stringargument = splitsaying.toString()
-//           let newchar = ' '
-//           stringargument = stringargument.split(',').join(newchar)
-//           receivedMessage.channel.send(stringargument)
-//         }
     }
     // else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
         // var feelings = Math.floor(Math.random() * 3)
