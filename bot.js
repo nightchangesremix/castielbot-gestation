@@ -34,7 +34,7 @@ client.on('message', (receivedMessage) => {
         }
     }
     else if (receivedMessage.content.toLowerCase().includes('cas fuck you') || receivedMessage.content.toLowerCase().includes('fuck you cas')) {
-        casattachment = new Discord.Attachment('https://imgur.com/a/lAyB0c1')
+        casattachment = new Discord.Attachment('https://i.imgur.com/KvuAzqw.jpg')
         receivedMessage.channel.send(casattachment)
     }
     else if (receivedMessage.content.toLowerCase().includes('cas') && receivedMessage.content.toLowerCase().includes('on a scale of 1 to 10')) {
@@ -102,19 +102,19 @@ client.on('message', (receivedMessage) => {
                receivedMessage.channel.send("👼")
         }
         if (reply == 0) {
-            const attachment = new Discord.Attachment("https://imgur.com/a/2ItxzpK")
+            const attachment = new Discord.Attachment("https://i.imgur.com/0Js9tC3.jpg")
             receivedMessage.channel.send(attachment)
         }
         if (reply == 1) {
-            const attachment = new Discord.Attachment("https://imgur.com/a/e1XvjTT")
+            const attachment = new Discord.Attachment("https://i.imgur.com/Me3VhgC.jpg")
             receivedMessage.channel.send(attachment)
         }
         if (reply == 2) {
-            const attachment = new Discord.Attachment("https://imgur.com/a/rfMN5vI")
+            const attachment = new Discord.Attachment("https://i.imgur.com/y79VBsb.jpg")
             receivedMessage.channel.send(attachment)
         }
         if (reply == 3) {
-            const attachment = new Discord.Attachment("https://imgur.com/a/5Nwg9NF")
+            const attachment = new Discord.Attachment("https://i.imgur.com/mtCWX1E.jpg")
             receivedMessage.channel.send(attachment)
         }
         
