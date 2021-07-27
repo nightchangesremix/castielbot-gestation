@@ -235,9 +235,9 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send(speak)
     }
         
-    if (arguments ==  "random") {
-        randomsent()
-        receivedMessage.channel.send(sent)
+    // if (arguments ==  "random") {
+       // randomsent()
+        // receivedMessage.channel.send(sent)
     }
     if (arguments == "bde") {
         var bde = Math.floor(Math.random() * 101)
