@@ -89,21 +89,18 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send(stringargument)
 
     }
-    // else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
-        // var feelings = Math.floor(Math.random() * 3)
-        // if (feelings == 0) {
-           // randomspeak()
-            //receivedMessage.channel.send(speak)
-        //}
-        //if (feelings == 1) {
-         //   randomsent()
-           // receivedMessage.channel.send(sent)
-        //}
-        // if (feelings == 2) {
-           // randomimg()
-            //receivedMessage.channel.send(webAttachment)
-        //}
-    // }
+    else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
+        var feelings = Math.floor(Math.random() * 3)
+        if (feelings == 0) {
+            receivedMessage.channel.send("Not sure about that one, bestie.")
+        }
+        if (feelings == 1) {
+           receivedMessage.channel.send("As Avril Lavigne said, 'Hell yeah!'")
+        }
+        if (feelings == 2) {
+            receivedMessage.channel.send("...wig, I guess?")
+       }
+    }
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
