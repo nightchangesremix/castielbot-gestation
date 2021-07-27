@@ -325,7 +325,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
+    if (arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
         receivedMessage.channel.send("invalid command. beep boop.")
     }
 }
