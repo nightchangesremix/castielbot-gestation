@@ -164,7 +164,7 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
     }
     if (arguments == "help") {
-        receivedMessage.channel.send("`!cas talk: get a random cas quote\n!cas speak: make me say something\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random cas quote\n!cas speak: make me say something\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!")
     }
     if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
