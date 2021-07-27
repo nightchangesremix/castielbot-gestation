@@ -72,8 +72,8 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send("That's my bloodfreak-in-law!")
     }
         
-    else if (receivedMessage.content.toLowerCase().includes('jack')) {
-        receivedMessage.channel.send("That's my baby, you don't understand, that's my baby!")
+    else if (receivedMessage.content.toLowerCase().includes('jack ')) {
+        receivedMessage.channel.send("Baby boy son boy.")
     }
         
     else if (receivedMessage.content.toLowerCase().includes(':/')) {
@@ -171,6 +171,41 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon.\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\nYou can also make me say anything you want by typing 'cas say' and I respond to my own name (plus a few others)!")
     }
+    if (arguments = "feel") { 
+        var feel = Math.floor(Math.random() * 10)
+        if (feel == 0) {
+            receivedMessage.channel.send("I feel like murder is okay.")
+        }
+        if (feel == 1) {
+            receivedMessage.channel.send("I feel like the poorest of little meow meows :(")
+        }
+        if (feel == 2) { 
+            receivedMessage.channel.send("I'm not o-fucking-kay!!!")
+        }
+        if (feel == 3) {
+            receivedMessage.channel.send("I'm inconsolably horny :/") 
+        }
+        if (feel == 4) {
+            receivedMessage.channel.send("I'm feeling petite and fertile. Submissive and breedable, even.")
+        }
+        if (feel == 5) {
+            receivedMessage.channel.send("ERROR CODE 36404: FILENAME 'EMOTIONS' NOT FOUND.")
+        }
+        if (feel == 6) {
+            receivedMessage.channel.send("I'm just a man in love! I can't be held responsible for my actions!")
+        }
+        if (feel == 7) {
+            receivedMessage.channel.send("I think I'm gay.")
+        }
+        if (feel == 8) {
+            receivedMessage.channel.send("I don't know how I feel, I'm waiting for Dean to tell me.")
+        }
+        if (feel == 9) {
+            receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
+        }
+    }
+           
+        
     if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
@@ -325,7 +360,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
+    if (arguments != "feel" && arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
         receivedMessage.channel.send("invalid command. beep boop.")
     }
 }
