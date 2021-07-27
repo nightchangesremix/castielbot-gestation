@@ -174,7 +174,7 @@ function helpCommand(arguments, receivedMessage) {
     
     if (arguments == "feel") { 
         randomfeel()
-        receivedMessage.channel.send(randomfeel)
+        receivedMessage.channel.send(feel)
         
     }
            
