@@ -296,7 +296,7 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "bhe") {
         var bhe = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
-        receivedMessage.channel.send("You, " + usersend + ", have exactly " + bde + "% big hole energy!)
+        receivedMessage.channel.send("You, " + usersend + ", have exactly " + bde + "% big hole energy!")
                                      }
     if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
