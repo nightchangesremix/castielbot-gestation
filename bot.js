@@ -18,7 +18,7 @@ client.on('ready', () => {
 })
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
-        return 
+        return
     }
     //receivedMessage.channel.send("hello, " + receivedMessage.author.toString() + "!")
     if (receivedMessage.content.startsWith("!")) {
@@ -117,15 +117,15 @@ client.on('message', (receivedMessage) => {
             const attachment = new Discord.Attachment("https://i.imgur.com/mtCWX1E.jpg")
             receivedMessage.channel.send(attachment)
         }
-        
+
     }
-    
+
 })
 
 function processCommand(receivedMessage) {
     let fullCommand = receivedMessage.content.substr(1)
     let splitCommand = fullCommand.split(" ")
-    let primaryCommand = splitCommand[0]
+    let primaryCommand = splitCommand[0].toLowerCase()
     let arguments = splitCommand.slice(1)
 
     if (primaryCommand == "cas") {
@@ -135,20 +135,28 @@ function processCommand(receivedMessage) {
         const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
         receivedMessage.channel.send(`${expressionless}`)
     }
+    if (primaryCommand == "cass") {
+      receivedMessage.channel.send("I am not interested in being polite or heterosexual");
+    }
 }
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
         client.destroy()
     }
+    if (arguments.length == 0) {
+            receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
+    }
+
+    else {
+      let argumentChop = arguments.split(" ")
+      arguments = argumentChop[0]
+    }
     if (arguments == "check") {
         receivedMessage.channel.send("I am online!")
     }
     if (arguments == "hug") {
         receivedMessage.channel.send("*hugs you back* :) I love you")
-    }
-    if (arguments.length == 0) {
-        receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
     }
     if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random cas quote\n!cas speak: make me say something\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!")
@@ -221,7 +229,7 @@ function helpCommand(arguments, receivedMessage) {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
-        
+
     if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
@@ -438,7 +446,7 @@ function randomspeak() {
             speak = "Do Crowley and Benny deserve rights? Discuss."
         }
         if (talk2 == 40) {
-            speak = "You ain't fuck me, you fucked the old body\nYou ain't fuck Nicki, you fucked Nicole body" 
+            speak = "You ain't fuck me, you fucked the old body\nYou ain't fuck Nicki, you fucked Nicole body"
         }
         if (talk2 == 41) {
             speak = "Hola, Mishamigos."
