@@ -62,11 +62,22 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes(':<(')) {
         receivedMessage.channel.send(":>(")
     }
-    else if (receivedMessage.content.toLowerCase() == "dean") {
+    else if (receivedMessage.content.toLowerCase().includes('dean')) {
         receivedMessage.channel.send("DEAN!")
     }
     else if (receivedMessage.content.toLowerCase().includes('chuck')) {
-        receivedMessage.channel.send("fuck that guy")
+        receivedMessage.channel.send("Fuck that guy!")
+        
+    else if (receivedMessage.content.toLowerCase().includes('sam')) {
+        receivedMessage.channel.send("That's my bloodfreak-in-law!")
+    }
+        
+    else if (receivedMessage.content.toLowerCase().includes('jack')) {
+        receivedMessage.channel.send("That's my baby, you don't understand, that's my baby!")
+    }
+        
+    else if (receivedMessage.content.toLowerCase().includes(':/')) {
+        receivedMessage.channel.send(":/")
     }
     else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
@@ -145,10 +156,17 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("I am online!")
     }
     if (arguments == "hug") {
-        receivedMessage.channel.send("*hugs you back* :) I love you")
+        receivedMessage.channel.send("[hugs you back] :) I love you.")
     }
+    if (arguments == "kiss") {
+        receivedMessage.channel.send("Mwah! Don't tell Dean ;)") 
+    }
+    if (arguments == "hold") {
+        receivedMessage.channel.send("[is hold]")
+    }
+    
     if (arguments.length == 0) {
-        receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
+        receivedMessage.channel.send("Hi bestie! Say !cas help for a list of commands")
     }
     if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random cas quote\n!cas speak: make me say something\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!")
