@@ -1,1 +1,1 @@
-worker: node CastielBot.js
+worker: node bot.js
