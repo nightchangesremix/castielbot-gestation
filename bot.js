@@ -41,32 +41,14 @@ client.on('message', (receivedMessage) => {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
     }
-    else if (receivedMessage.content.toLowerCase().includes(':)')) {
-        receivedMessage.channel.send(":)")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(':(')) {
-        receivedMessage.channel.send(":(")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(';)')) {
-        receivedMessage.channel.send(";)")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(':>)')) {
-        receivedMessage.channel.send(":<)")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(':>(')) {
-        receivedMessage.channel.send(":<(")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(':<)')) {
-        receivedMessage.channel.send(":>)")
-    }
-    else if (receivedMessage.content.toLowerCase().includes(':<(')) {
-        receivedMessage.channel.send(":>(")
-    }
+
     else if (receivedMessage.content.toLowerCase() == "dean") {
-        receivedMessage.channel.send("DEAN!")
+        var deanCheck = /\sdean\s/i
+        if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
     }
     else if (receivedMessage.content.toLowerCase().includes('chuck')) {
-        receivedMessage.channel.send("fuck that guy")
+        var chuckCheck = /\schuck\s/i
+        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("fuck that guy") }
     }
     else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
@@ -118,7 +100,34 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send(attachment)
         }
 
+    } else {
+        var emotiPattern = /\s:.*[)(/]\s/
+        var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
+        if (emotiFound) {
+          receivedMessage.channel.send(emotiFound)
+        }
     }
+    // else if (receivedMessage.content.toLowerCase().includes(':)')) {
+    //     receivedMessage.channel.send(":)")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(':(')) {
+    //     receivedMessage.channel.send(":(")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(';)')) {
+    //     receivedMessage.channel.send(";)")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(':>)')) {
+    //     receivedMessage.channel.send(":<)")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(':>(')) {
+    //     receivedMessage.channel.send(":<(")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(':<)')) {
+    //     receivedMessage.channel.send(":>)")
+    // }
+    // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
+    //     receivedMessage.channel.send(":>(")
+    // }
 
 })
 
@@ -147,7 +156,6 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
     }
-
     else {
       let argumentChop = arguments.split(" ")
       arguments = argumentChop[0]
