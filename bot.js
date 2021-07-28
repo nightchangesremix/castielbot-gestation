@@ -164,10 +164,16 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("I am online!")
     }
     if (arguments == "hug") {
-        receivedMessage.channel.send("*hugs you back* :) I love you")
+        receivedMessage.channel.send("[hugs you back] :) I love you.")
+    }
+    if (arguments == "kiss") {
+        receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
+    }
+    if (arguments == "hold") {
+        receivedMessage.channel.send("[is hold]")
     }
     if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random cas quote\n!cas speak: make me say something\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon.\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death!\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\nYou can also make me say anything you want by typing 'cas say' and I respond to my own name (plus a few others)!")
     }
     if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
@@ -323,7 +329,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
+    if (arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
         receivedMessage.channel.send("invalid command. beep boop.")
     }
 }
