@@ -18,7 +18,7 @@ client.on('ready', () => {
 })
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
-        return 
+        return
     }
     //receivedMessage.channel.send("hello, " + receivedMessage.author.toString() + "!")
     if (receivedMessage.content.startsWith("!")) {
@@ -67,15 +67,15 @@ client.on('message', (receivedMessage) => {
     }
     else if (receivedMessage.content.toLowerCase().includes('chuck')) {
         receivedMessage.channel.send("Fuck that guy!")
-    } 
+    }
     else if (receivedMessage.content.toLowerCase().includes('sam')) {
         receivedMessage.channel.send("That's my bloodfreak-in-law!")
     }
-        
+
     else if (receivedMessage.content.toLowerCase().includes('jack')) {
         receivedMessage.channel.send("That's my baby, you don't understand, that's my baby!")
     }
-        
+
     else if (receivedMessage.content.toLowerCase().includes(':/')) {
         receivedMessage.channel.send(":/")
     }
@@ -128,15 +128,15 @@ client.on('message', (receivedMessage) => {
             const attachment = new Discord.Attachment("https://i.imgur.com/mtCWX1E.jpg")
             receivedMessage.channel.send(attachment)
         }
-        
+
     }
-    
+
 })
 
 function processCommand(receivedMessage) {
     let fullCommand = receivedMessage.content.substr(1)
     let splitCommand = fullCommand.split(" ")
-    let primaryCommand = splitCommand[0]
+    let primaryCommand = splitCommand[0].toLowerCase()
     let arguments = splitCommand.slice(1)
 
     if (primaryCommand == "cas") {
@@ -146,11 +146,22 @@ function processCommand(receivedMessage) {
         const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
         receivedMessage.channel.send(`${expressionless}`)
     }
+    if (primaryCommand == "cass") {
+      receivedMessage.channel.send("I am not interested in being polite or heterosexual");
+    }
 }
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
         client.destroy()
+    }
+    if (arguments.length == 0) {
+            receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
+    }
+
+    else {
+      let argumentChop = arguments.split(" ")
+      arguments = argumentChop[0]
     }
     if (arguments == "check") {
         receivedMessage.channel.send("I am online!")
@@ -159,14 +170,10 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("[hugs you back] :) I love you.")
     }
     if (arguments == "kiss") {
-        receivedMessage.channel.send("Mwah! Don't tell Dean ;)") 
+        receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
     }
     if (arguments == "hold") {
         receivedMessage.channel.send("[is hold]")
-    }
-    
-    if (arguments.length == 0) {
-        receivedMessage.channel.send("Hi bestie! Say !cas help for a list of commands")
     }
     if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon.\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\nYou can also make me say anything you want by typing 'cas say' and I respond to my own name (plus a few others)!")
@@ -239,7 +246,7 @@ function helpCommand(arguments, receivedMessage) {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
-        
+
     if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
@@ -456,7 +463,7 @@ function randomspeak() {
             speak = "Do Crowley and Benny deserve rights? Discuss."
         }
         if (talk2 == 40) {
-            speak = "You ain't fuck me, you fucked the old body\nYou ain't fuck Nicki, you fucked Nicole body" 
+            speak = "You ain't fuck me, you fucked the old body\nYou ain't fuck Nicki, you fucked Nicole body"
         }
         if (talk2 == 41) {
             speak = "Hola, Mishamigos."
