@@ -131,8 +131,9 @@ client.on('message', (receivedMessage) => {
         }
 
     } else {
-        var emotiPattern = /\s:.*[)(/]\s/
+        var emotiPattern = /[\s\n\r\t]:.*[)(/][\s\n\r\t]/
         var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
+        if(testEmo.match(emotiPattern) {receivedMessage.channel.send("you did it!")}
         if (emotiFound) {
           receivedMessage.channel.send(emotiFound)
         }
