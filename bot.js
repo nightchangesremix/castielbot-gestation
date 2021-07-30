@@ -199,29 +199,29 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
         client.destroy()
     }
-    if (arguments.length == 0) {
+    else if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
     }
     else {
       arguments = arguments[0]
     }
-    if (arguments == "check") {
+    else if (arguments == "check") {
         receivedMessage.channel.send("I am online!")
     }
-    if (arguments == "hug") {
+    else if (arguments == "hug") {
         receivedMessage.channel.send("[hugs you back] :) I love you.")
     }
-    if (arguments == "kiss") {
+   else if (arguments == "kiss") {
         receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
     }
-    if (arguments == "hold") {
+   else if (arguments == "hold") {
         receivedMessage.channel.send("[is hold]")
     }
-    if (arguments == "help") {
+   else if (arguments == "help") {
         receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas bhe: measure your big hole energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\n!cas feel: learn how I'm feeling\nYou can also make me say anything you want by typing 'cas say,' get my opinions by asking 'cas what do you think,' and I respond to my own name (plus a few others)!")
     }
 
-    if (arguments == "feel") {
+   else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
         if (feel == 0) {
             receivedMessage.channel.send("I feel like murder is okay.")
@@ -256,7 +256,7 @@ function helpCommand(arguments, receivedMessage) {
     }
 
 
-    if (arguments == "talk") {
+    else if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
             receivedMessage.channel.send("I'm an angel, you ass. I don't have a soul.")
@@ -320,16 +320,16 @@ function helpCommand(arguments, receivedMessage) {
         }
     }
 
-    if (arguments == "speak") {
+    else if (arguments == "speak") {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
 
-    if (arguments ==  "random") {
+   else if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
     }
-    if (arguments == "bde") {
+    else if (arguments == "bde") {
         var bde = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
 //         if (usersend.includes("!")) {
@@ -342,12 +342,12 @@ function helpCommand(arguments, receivedMessage) {
 
     }
 
-    if (arguments == "bhe") {
+    else if (arguments == "bhe") {
         var bhe = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
         receivedMessage.channel.send("You, " + usersend + ", have exactly " + bhe + "% big hole energy!")
                                      }
-    if (arguments == "valid") {
+    else if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
         if (valid == 0) {
             receivedMessage.channel.send("You're nothing.")
@@ -365,7 +365,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You've got a nice cock.")
         }
     }
-    if (arguments == "death") {
+    else if (arguments == "death") {
         var hour = Math.floor(Math.random() * 24)
         var minute = Math.floor(Math.random() * 60)
         var seconds = Math.floor(Math.random() * 60)
@@ -417,7 +417,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments == "lobotomy") {
+    else if (arguments == "lobotomy") {
       receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
     }
    else {
