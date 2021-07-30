@@ -62,10 +62,13 @@ client.on('message', (receivedMessage) => {
     // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
     //     receivedMessage.channel.send(":>(")
     // }
-    else if (receivedMessage.content.toLowerCase().includes("dean")) {
+    else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
     }
+   // else if (receivedMessage.content.toLowerCase().includes('chuck ')) {
+      //  receivedMessage.channel.send("Fuck that guy!")
+    //}
     else if (receivedMessage.content.toLowerCase().includes('john ')) {
         receivedMessage.channel.send("Killingthatmannatural.")
     }
@@ -76,9 +79,9 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes('jack ')) {
         receivedMessage.channel.send("Baby boy son boy.")
     }
-    else if (receivedMessage.content.toLowerCase().includes('chuck')) {
+   else if (receivedMessage.content.toLowerCase().includes('chuck')) {
         var chuckCheck = /\schuck\s/i
-        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("fuck that guy") }
+        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
     }
     else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
@@ -107,7 +110,7 @@ client.on('message', (receivedMessage) => {
     }
     else if (receivedMessage.content.toLowerCase().includes('cas')) {
         var reply = Math.floor(Math.random() * 50)
-        if (reply != 0 && reply != 1 && reply != 2 && reply != 3) {
+        if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
                receivedMessage.channel.send("👼")
         }
         if (reply == 0) {
@@ -124,6 +127,10 @@ client.on('message', (receivedMessage) => {
         }
         if (reply == 3) {
             const attachment = new Discord.Attachment("https://i.imgur.com/mtCWX1E.jpg")
+            receivedMessage.channel.send(attachment)
+        }
+        if (reply == 4) {
+            const attachment = new Discord.Attachment("https://i.imgur.com/648t8Ms.jpg")
             receivedMessage.channel.send(attachment)
         }
 
@@ -174,12 +181,17 @@ function processCommand(receivedMessage) {
     if (primaryCommand == "cas") {
         helpCommand(arguments, receivedMessage)
     }
-    if (primaryCommand == "castiel") {
-        const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
-        receivedMessage.channel.send(`${expressionless}`)
-    }
+    // if (primaryCommand == "castiel") {
+        // const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
+       // receivedMessage.channel.send(`${expressionless}`)
+    // }
+
     if (primaryCommand == "cass") {
-      receivedMessage.channel.send("I am not interested in being polite or heterosexual");
+        var cass = Math.floor(Math.random() * 2)
+        if (cass == 0) {
+        receivedMessage.channel.send("I am not interested in being polite or heterosexual") }
+        if (cass == 1) {
+            receivedMessage.channel.send("Who the hell is Cass?") }
     }
 }
 
@@ -188,7 +200,7 @@ function helpCommand(arguments, receivedMessage) {
         client.destroy()
     }
     if (arguments.length == 0) {
-            receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands")
+            receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
     }
     else {
       arguments = arguments[0]
@@ -444,7 +456,7 @@ function randomspeak() {
             speak = "I just took a DNA test, turns out I'm 100% that bitch."
         }
         if (talk2 == 9) {
-            speak = "Have you ever thought about snails? Some humans think that the story of cupid comes from snails, which shoot “love darts” at the object of their affections, containing a mucus that increases the chances of their sperm surviving. Before they knew that though, humans theorized that the darts were an aphrodisiac, hence inspiring Cupid. This is of course false, Cupids are an essential rank of angel"
+            speak = "Have you ever thought about snails? Some humans think that the story of cupid comes from snails, which shoot “love darts” at the object of their affections, containing a mucus that increases the chances of their sperm surviving. Before they knew that though, humans theorized that the darts were an aphrodisiac, hence inspiring Cupid. This is of course false, Cupids are an essential rank of angel."
         }
         if (talk2 == 10) {
             speak = "Dean -_-"
@@ -615,7 +627,7 @@ function randomspeak() {
             speak = "Crowley I diagnose you with rotten auras, horrid vibes, unaligned chakras, and a calcified pineal gland."
         }
         if (talk2 == 65) {
-            speak = "How.. to.. Fix a… truck…."
+            speak = "How... to... Fix a... truck..."
         }
         if (talk2 == 66) {
             speak = "The Impala's not even that good a car, Dean."
@@ -690,10 +702,10 @@ function randomspeak() {
             speak = "Meesa Jar Jar Binks"
         }
         if (talk2 == 90) {
-            speak = ""
+            speak = "Nicki Minaj outsold, stream The Pinkprint."
         }
         if (talk2 == 91) {
-            speak = "Hi my name is Castiel Free Will Blue Eyes Black Hair Rebellious Angel Emotions Winchester and I have a fat pussy and fatter heart (that’s how I got my name) with icy blue eyes like limpid tears and black hair that reaches my neck and so many human emotions that my heart feels like it's gonna burst sometimes and a lot of people tell me I look like Misha Collins (AN: if u don’t know who he is get da hell out of here!)."
+            speak = "Hi my name is Castiel Free Will Incredibly Sexy Rebellious Angel Emotions Winchester and I have a fat pussy and fatter heart (that’s how I got my name) with icy blue eyes like limpid tears and black hair that reaches my neck and so many human emotions that my heart feels like it's gonna burst sometimes and a lot of people tell me I look like Misha Collins (AN: if u don’t know who he is get da hell out of here!)."
         }
         if (talk2 == 92) {
             speak = "Winchester Derangement Syndrome."
@@ -720,7 +732,7 @@ function randomspeak() {
             speak = "Dean, have you ever heard of a novel called...Twist and Shout?"
         }
         if (talk2 == 100) {
-            speak = "'m not a 'Dean girl gn', actually, I'm just his husband."
+            speak = "I'm not a 'Dean girl gn', actually, I'm just his husband."
         }
         if (talk2 == 101) {
             speak = "[REDACTED]"
