@@ -420,7 +420,7 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "lobotomy") {
       receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
     }
-    if (arguments != "bhe" && arguments != "feel" && arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
+   else {
         receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
     }
 }
