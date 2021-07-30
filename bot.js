@@ -131,10 +131,14 @@ client.on('message', (receivedMessage) => {
         }
 
     } else {
-        var emotiPattern = /[^\s\n\r\t\0]:.*[)(/][\s\n\r\t\0]/
+        var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
+        var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
         var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
+        var startEmoti = receivedMessage.content.toLowerCase().match(startPattern)
         if (emotiFound) {
           receivedMessage.channel.send(emotiFound)
+        }  else if (startEmoti) {
+            receivedMessage.channel.send(startEmoti)
         }
     }
     // else if (receivedMessage.content.toLowerCase().includes(':)')) {
