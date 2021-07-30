@@ -62,12 +62,9 @@ client.on('message', (receivedMessage) => {
     // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
     //     receivedMessage.channel.send(":>(")
     // }
-    else if (receivedMessage.content.toLowerCase() == "dean") {
+    else if (receivedMessage.content.toLowerCase().includes("dean")) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('chuck ')) {
-        receivedMessage.channel.send("Fuck that guy!")
     }
     else if (receivedMessage.content.toLowerCase().includes('john ')) {
         receivedMessage.channel.send("Killingthatmannatural.")
@@ -130,7 +127,10 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send(attachment)
         }
 
-    } else {
+    } else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
+      receivedMessage.channel.send("Goodbye, stranger.")
+    }
+    else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
         var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
         var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
@@ -404,6 +404,9 @@ function helpCommand(arguments, receivedMessage) {
         if (month == "11") {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
+    }
+    if (arguments == "lobotomy") {
+      receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
     }
     if (arguments != "bhe" && arguments != "feel" && arguments != "kiss" && arguments !="hold" && arguments != "death" && arguments != "check" && arguments != "hug" && arguments != "valid" && arguments != "talk" && arguments != "speak" && arguments != "snap" && arguments != "bde" && arguments != "random" && arguments != "sent" && arguments != "hmmm" && arguments != "help" && arguments != "failsafe" && arguments!= "converse" && arguments.length > 0){
         receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
