@@ -205,7 +205,7 @@ function helpCommand(arguments, receivedMessage) {
     else {
       arguments = arguments[0]
     }
-    else if (arguments == "check") {
+    if (arguments == "check") {
         receivedMessage.channel.send("I am online!")
     }
     else if (arguments == "hug") {
