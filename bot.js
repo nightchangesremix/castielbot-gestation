@@ -726,7 +726,7 @@ function randomspeak() {
             speak = "Dean, have you ever heard of a novel called...Twist and Shout?"
         }
         if (talk2 == 100) {
-            speak = "'m not a 'Dean girl gn', actually, I'm just his husband."
+            speak = "I'm not a 'Dean girl gn', actually, I'm just his husband."
         }
         if (talk2 == 101) {
             speak = "[REDACTED]"
