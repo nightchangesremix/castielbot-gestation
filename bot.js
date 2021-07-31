@@ -34,6 +34,18 @@ client.on('message', (receivedMessage) => {
         }
     }
     else if (receivedMessage.content.toLowerCase().includes('cas fuck you') || receivedMessage.content.toLowerCase().includes('fuck you cas')) {
+        var cointoss = Math.floor(Math.random() * 2)
+        if (cointoss == 0) {
+            const attachment = new Discord.Attachment("https://i.imgur.com/KvuAzqw.jpg")
+            receivedMessage.channel.send(attachment) 
+        }
+        if (cointoss == 1) {
+            const attachment = new Discord.Attachment("https://i.imgur.com/LCi9crp.jpg")
+            receivedMessage.channel.send(attachment)
+        }
+    }
+    
+                
         casattachment = new Discord.Attachment('https://i.imgur.com/KvuAzqw.jpg')
         receivedMessage.channel.send(casattachment)
     }
@@ -189,7 +201,7 @@ function processCommand(receivedMessage) {
     if (primaryCommand == "cass") {
         var cass = Math.floor(Math.random() * 2)
         if (cass == 0) {
-        receivedMessage.channel.send("I am not interested in being polite or heterosexual") }
+        receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
         if (cass == 1) {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
@@ -219,7 +231,7 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("[is hold]")
     }
    else if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas bhe: measure your big hole energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\n!cas feel: learn how I'm feeling\n!cas lobotomy: become Naomi-coded\nYou can also make me say anything you want by typing 'cas say,' get my opinions by asking 'cas what do you think,' and I respond to my own name (plus a few others)!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:`\n!cas talk: get a random Cas quote from canon\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas bhe: measure your big hole energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\n!cas feel: learn how I'm feeling\n!cas lobotomy: become Naomi-coded`\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
     }
 
    else if (arguments == "feel") {
