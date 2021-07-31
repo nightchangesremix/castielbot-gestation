@@ -45,10 +45,6 @@ client.on('message', (receivedMessage) => {
         }
     }
     
-                
-        casattachment = new Discord.Attachment('https://i.imgur.com/KvuAzqw.jpg')
-        receivedMessage.channel.send(casattachment)
-    }
     else if (receivedMessage.content.toLowerCase().includes('cas') && receivedMessage.content.toLowerCase().includes('on a scale of 1 to 10')) {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
