@@ -105,6 +105,23 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send("...wig, I guess?")
        }
     }
+    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
+             var goodbot = Math.floor(Math.random() * 4)
+             if (goodbot == 0) {
+                 receivedMessage.channel.send("**Don't condescend to me.**")
+             }
+             if (goodbot == 1) {
+                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
+             }
+             if (goodbot == 2) {
+                 receivedMessage.channel.send("Good human.")
+             }
+             if (goodbot == 3) {
+                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
+             }
+}
+          
+    
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
