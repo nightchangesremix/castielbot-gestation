@@ -159,9 +159,16 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send(attachment)
         }
 
-    } else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
+    } 
+    
+    else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
+    else if (receivedMessage.content.toLowerCase().includes('goodnight cas')) || (receivedMessage.content.toLowerCase().includes('cas goodnight')) {
+        const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
+        receivedMessage.channel.send(attachment)
+    }
+                                                  
     else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
         var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
