@@ -450,8 +450,19 @@ function helpCommand(arguments, receivedMessage) {
       receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
     }
      else if (arguments == "goodnight") {
-        const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
-        receivedMessage.channel.send(attachment)
+        var sleep = Math.floor(Math.random() * 3)
+        if (sleep == 0) {
+            const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
+            receivedMessage.channel.send(attachment) 
+        }
+         if (sleep == 1) {
+             const attachment = new Discord.Attachment("https://i.imgur.com/RZoL4KF.jpg")
+             receivedMessage.channel.send(attachment)
+         }
+         if (sleep == 2) {
+             const attachment = new Discord.Attachment("https://i.imgur.com/b5Kcsmy.jpg")
+             receivedMessage.channel.send(attachment)
+         }
     }
    else {
         receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
