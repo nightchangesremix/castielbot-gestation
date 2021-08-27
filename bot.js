@@ -164,10 +164,6 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
-    else if (receivedMessage.content.toLowerCase().includes('cas goodnight') || receivedMessage.content.toLowerCase().includes('goodnight cas')) {
-        const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
-        receivedMessage.channel.send(attachment)
-    }
                                                   
     else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
@@ -452,6 +448,10 @@ function helpCommand(arguments, receivedMessage) {
     }
     else if (arguments == "lobotomy") {
       receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
+    }
+     else if (arguments == "goodnight") {
+        const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
+        receivedMessage.channel.send(attachment)
     }
    else {
         receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
