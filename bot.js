@@ -164,7 +164,7 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
-    else if (receivedMessage.content.toLowerCase().includes('goodnight cas')) || (receivedMessage.content.toLowerCase().includes('cas goodnight')) {
+    else if (receivedMessage.content.toLowerCase().includes('goodnight cas')) || receivedMessage.content.toLowerCase().includes('cas goodnight') {
         const attachment = new Discord.Attachment("https://i.imgur.com/srChjJX.png")
         receivedMessage.channel.send(attachment)
     }
