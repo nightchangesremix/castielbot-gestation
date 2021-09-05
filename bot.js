@@ -474,7 +474,7 @@ function helpCommand(arguments, receivedMessage) {
 
 
 function randomspeak() {
-    var talk2 = Math.floor(Math.random() * 102)
+    var talk2 = Math.floor(Math.random() * 103)
         if (talk2 == 0) {
             speak = "I'm the cunt you married! The only time you ever liked yourself was when you were trying to be someone this cunt might like! I'm not a quitter, I'm that CUNT. I've killed for you, who else can say that? You think you'd be happy with a nice Midwestern girl? No way, baby! I'm it."
         }
@@ -783,6 +783,9 @@ function randomspeak() {
         }
         if (talk2 == 101) {
             speak = "[REDACTED]"
+        }
+        if (talk2 == 102) { 
+            speak = "Oh, Dean... his nipple is out..."
         }
 }
 
