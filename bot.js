@@ -49,6 +49,18 @@ client.on('message', (receivedMessage) => {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
     }
+    
+        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
+        let fullsaying = receivedMessage.content.substr(1)
+        let splitsaying = fullsaying.split(" ")
+        let argumentsaying = splitsaying.slice(2)
+        let stringargument = argumentsaying.toString()
+        let newchar = ' '
+        stringargument = stringargument.split(',').join(newchar)
+        receivedMessage.channel.send(stringargument)
+
+    }
+    
     // else if (receivedMessage.content.toLowerCase().includes(':)')) {
     //     receivedMessage.channel.send(":)")
     // }
@@ -91,16 +103,7 @@ client.on('message', (receivedMessage) => {
         var chuckCheck = /\schuck\s/i
         if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
     }
-    else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
-        let fullsaying = receivedMessage.content.substr(1)
-        let splitsaying = fullsaying.split(" ")
-        let argumentsaying = splitsaying.slice(2)
-        let stringargument = argumentsaying.toString()
-        let newchar = ' '
-        stringargument = stringargument.split(',').join(newchar)
-        receivedMessage.channel.send(stringargument)
 
-    }
     else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
         var feelings = Math.floor(Math.random() * 3)
         if (feelings == 0) {
