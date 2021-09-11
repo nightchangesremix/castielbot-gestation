@@ -254,8 +254,8 @@ function helpCommand(arguments, receivedMessage) {
     }
     
     else if (arguments == "birth") {
-        const attachment = new Discord.attachment("https://i.imgur.com/kANqts7.jpg")
-        receivedMessage.channel.send(attachment)
+         const birthday = new Discord.Attachment("https://i.imgur.com/kANqts7.jpg")
+         receivedMessage.channel.send(birthday) 
     }
 
    else if (arguments == "feel") {
