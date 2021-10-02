@@ -258,6 +258,28 @@ function helpCommand(arguments, receivedMessage) {
          receivedMessage.channel.send(birthday) 
     }
 
+   else if (arguments == "poison") {
+       var poison = Math.floor(Math.random() * 5)
+       var usersend = receivedMessage.author.toString()
+       if (poison == 0) {
+           const attachment = new Discord.Attachment("https://i.imgur.com/z4ZfUlA.jpg")
+           receivedMessage.channel.send(attachment)
+       }
+       if (poison == 1) {
+           receivedMessage.channel.send("Your maid ouitfit looks lovely today," + usersend + ". Thank you so much for taking care of me!")
+       }
+       if (poison == 2) {
+           receivedMessage.channel.send("Could I please have some more soup, " + usersend + "? I'm sorry to be a bother.")
+       }
+       if (poison == 3) {
+           receivedMessage.channel.send("I'm so cold... could you lie down with me, " + usersend + "?") 
+       }
+       if (poison == 4) {
+           const attachment = new Discord.Attachment("https://i.imgur.com/1JAyyfz.jpg")
+           receivedMessage.channel.send(attachment)
+       }
+   }
+       
    else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
         if (feel == 0) {
