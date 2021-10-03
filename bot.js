@@ -41,34 +41,13 @@ client.on('message', (receivedMessage) => {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
     }
-    // else if (receivedMessage.content.toLowerCase().includes(':)')) {
-    //     receivedMessage.channel.send(":)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':(')) {
-    //     receivedMessage.channel.send(":(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(';)')) {
-    //     receivedMessage.channel.send(";)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>)')) {
-    //     receivedMessage.channel.send(":<)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>(')) {
-    //     receivedMessage.channel.send(":<(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<)')) {
-    //     receivedMessage.channel.send(":>)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
-    //     receivedMessage.channel.send(":>(")
-    // }
+    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+        receivedMessage.channel.send("Fullmetal Alchemist") 
+    }
     else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
     }
-   // else if (receivedMessage.content.toLowerCase().includes('chuck ')) {
-      //  receivedMessage.channel.send("Fuck that guy!")
-    //}
     else if (receivedMessage.content.toLowerCase().includes('john ')) {
         receivedMessage.channel.send("Killingthatmannatural.")
     }
