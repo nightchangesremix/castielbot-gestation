@@ -9,12 +9,6 @@ client.on('ready', () => {
         console.log(" - " + guild.name)
     })
     client.user.setActivity("Loving Dean Winchester")
-    // client.guilds.forEach((guild) => {
-    //     console.log(guild.name)
-    //     guild.channels.forEach((channel) => {
-    //         console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
-    //     })
-    // })
 })
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
@@ -60,35 +54,13 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send(stringargument)
 
     }
-    
-    // else if (receivedMessage.content.toLowerCase().includes(':)')) {
-    //     receivedMessage.channel.send(":)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':(')) {
-    //     receivedMessage.channel.send(":(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(';)')) {
-    //     receivedMessage.channel.send(";)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>)')) {
-    //     receivedMessage.channel.send(":<)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>(')) {
-    //     receivedMessage.channel.send(":<(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<)')) {
-    //     receivedMessage.channel.send(":>)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
-    //     receivedMessage.channel.send(":>(")
-    // }
+    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+        receivedMessage.channel.send("Fullmetal Alchemist") 
+    }   
     else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
     }
-   // else if (receivedMessage.content.toLowerCase().includes('chuck ')) {
-      //  receivedMessage.channel.send("Fuck that guy!")
-    //}
     else if (receivedMessage.content.toLowerCase().includes('john ')) {
         receivedMessage.channel.send("Killingthatmannatural.")
     }
@@ -179,27 +151,6 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send(startEmoti)
         }
     }
-    // else if (receivedMessage.content.toLowerCase().includes(':)')) {
-    //     receivedMessage.channel.send(":)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':(')) {
-    //     receivedMessage.channel.send(":(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(';)')) {
-    //     receivedMessage.channel.send(";)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>)')) {
-    //     receivedMessage.channel.send(":<)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>(')) {
-    //     receivedMessage.channel.send(":<(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<)')) {
-    //     receivedMessage.channel.send(":>)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
-    //     receivedMessage.channel.send(":>(")
-    // }
 
 })
 
@@ -212,10 +163,6 @@ function processCommand(receivedMessage) {
     if (primaryCommand == "cas") {
         helpCommand(arguments, receivedMessage)
     }
-    // if (primaryCommand == "castiel") {
-        // const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
-       // receivedMessage.channel.send(`${expressionless}`)
-    // }
 
     if (primaryCommand == "cass") {
         var cass = Math.floor(Math.random() * 2)
