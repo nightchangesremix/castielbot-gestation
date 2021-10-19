@@ -226,6 +226,25 @@ function helpCommand(arguments, receivedMessage) {
            receivedMessage.channel.send(attachment)
        }
    }
+    else if (arguments == "fuck") {
+       var fuck = Math.floor(Math.random() * 5)
+       if (fuck == 0) {
+           receivedMessage.channel.send("But I'm not ready to have a baby just yet...")
+       }
+       if (fuck == 1) {
+           receivedMessage.channel.send("Alright. Which one of us is going to wear the maid outfit?")
+       }
+       if (fuck == 2) {
+           receivedMessage.channel.send("Stop staring at my nipples!")
+       }
+       if (fuck == 3) {
+           receivedMessage.channel.send("Afterwards, please Dean about this, he'll get jealous and start biting me in public again.") 
+       }
+       if (fuck == 4) {
+           const attachment = new Discord.Attachment("https://imgur.com/BdvJyvL")
+           receivedMessage.channel.send(attachment)
+       }
+   }
        
    else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
