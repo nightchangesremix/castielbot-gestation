@@ -13,8 +13,7 @@ client.on('ready', () => {
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
         return
-    }`
-    //receivedMessage.channel.send("hello, " + receivedMessage.author.toString() + "!")
+    }
     if (receivedMessage.content.startsWith("!")) {
         processCommand(receivedMessage)
     }
