@@ -54,7 +54,11 @@ client.on('message', (receivedMessage) => {
 
     }
     else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
-        receivedMessage.channel.send("Fullmetal Alchemist") 
+        var fma = Math.floor(Math.random() * 20)
+        if (fma == 5) {
+            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
+        else {
+            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
     }   
     else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
@@ -237,7 +241,7 @@ function helpCommand(arguments, receivedMessage) {
            receivedMessage.channel.send("Stop staring at my nipples!")
        }
        if (fuck == 3) {
-           receivedMessage.channel.send("Afterwards, please Dean about this, he'll get jealous and start biting me in public again.") 
+           receivedMessage.channel.send("Afterwards, please tell Dean about this, he'll get jealous and start biting me in public again.") 
        }
        if (fuck == 4) {
            const attachment = new Discord.Attachment("https://i.imgur.com/BdvJyvL.jpg")
