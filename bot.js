@@ -8,7 +8,7 @@ client.on('ready', () => {
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name)
     })
-    client.user.setActivity("Loving Dean Winchester")
+    client.user.setActivity("In my whore era!")
     // client.guilds.forEach((guild) => {
     //     console.log(guild.name)
     //     guild.channels.forEach((channel) => {
@@ -51,9 +51,6 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.toLowerCase().includes('john ')) {
         receivedMessage.channel.send("Killingthatmannatural.")
     }
-    else if (receivedMessage.content.toLowerCase().includes('sam ')) {
-        receivedMessage.channel.send("That's my bloodfreak-in-law!")
-    }
 
     else if (receivedMessage.content.toLowerCase().includes('jack ')) {
         receivedMessage.channel.send("Baby boy son boy.")
@@ -88,6 +85,7 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send("That's me!")
     }
     else if (receivedMessage.content.toLowerCase().includes('cas')) {
+        var casCheck = /\scas\s/i
         var reply = Math.floor(Math.random() * 50)
         if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
                receivedMessage.channel.send("👼")
