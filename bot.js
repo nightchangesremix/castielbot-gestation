@@ -111,7 +111,7 @@ client.on('message', (receivedMessage) => {
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
-    else if (receivedMessage.content.toLowerCase().includes('cas')) {
+    else if (receivedMessage.content.toLowerCase().includes('castiel')) {
         var reply = Math.floor(Math.random() * 50)
         if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
                receivedMessage.channel.send("👼")
