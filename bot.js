@@ -247,7 +247,18 @@ function helpCommand(arguments, receivedMessage) {
            const attachment = new Discord.Attachment("https://i.imgur.com/BdvJyvL.jpg")
            receivedMessage.channel.send(attachment)
        }
-   }
+        var pegant = Math.floor(Math.random()*20)
+        if (pegant == 0) {
+            setTimeout(function(){ 
+            const attachment2 = new Discord.Attachment("https://i.imgur.com/rh833gH.jpg")
+            receivedMessage.channel.send(attachment2)
+        }, 120000) 
+        }
+        else {
+            const attachment3 = new Discord.Attachment("https://i.imgur.com/duwjj2I.png")
+            receivedMessage.channel.send(attachment3) 
+        }
+    }
        
    else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
