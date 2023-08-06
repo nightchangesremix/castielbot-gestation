@@ -8,7 +8,7 @@ client.on('ready', () => {
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name)
     })
-    client.user.setActivity("Loving Dean Winchester")
+    client.user.setActivity("at being a father.")
 })
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
@@ -255,11 +255,9 @@ function helpCommand(arguments, receivedMessage) {
         }, 120000) 
         }
         else {
-            const attachment3 = new Discord.Attachment("https://i.imgur.com/duwjj2I.png")
-            receivedMessage.channel.send(attachment3) 
         }
     }
-       
+        
    else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
         if (feel == 0) {
