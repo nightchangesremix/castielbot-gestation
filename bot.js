@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = process.env.DISCORD_BOT_SECRET;
+require('dotenv/config')
+ const token = process.env.DISCORD_BOT_SECRET;
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
@@ -8,7 +9,7 @@ client.on('ready', () => {
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name)
     })
-    client.user.setActivity("In my whore era!")
+    client.user.setActivity("at being a father.")
     // client.guilds.forEach((guild) => {
     //     console.log(guild.name)
     //     guild.channels.forEach((channel) => {
@@ -16,11 +17,14 @@ client.on('ready', () => {
     //     })
     // })
 })
+
+var pegantNumerical;
+
+
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
         return
     }
-    //receivedMessage.channel.send("hello, " + receivedMessage.author.toString() + "!")
     if (receivedMessage.content.startsWith("!")) {
         processCommand(receivedMessage)
     }
@@ -34,32 +38,23 @@ client.on('message', (receivedMessage) => {
         }
     }
     else if (receivedMessage.content.toLowerCase().includes('cas fuck you') || receivedMessage.content.toLowerCase().includes('fuck you cas')) {
-        casattachment = new Discord.Attachment('https://i.imgur.com/KvuAzqw.jpg')
-        receivedMessage.channel.send(casattachment)
+        var cointoss = Math.floor(Math.random() * 2)
+        if (cointoss == 0) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/KvuAzqw.jpg'] })
+    } 
+        if (cointoss == 1) 
+  {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/LCi9crp.jpg'] })
+    } 
     }
+    
     else if (receivedMessage.content.toLowerCase().includes('cas') && receivedMessage.content.toLowerCase().includes('on a scale of 1 to 10')) {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
     }
-    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
-        receivedMessage.channel.send("Fullmetal Alchemist") 
-    }
-    else if (receivedMessage.content.toLowerCase().includes('dean')) {
-        var deanCheck = /\sdean\s/i
-        if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('john ')) {
-        receivedMessage.channel.send("Killingthatmannatural.")
-    }
-
-    else if (receivedMessage.content.toLowerCase().includes('jack ')) {
-        receivedMessage.channel.send("Baby boy son boy.")
-    }
-   else if (receivedMessage.content.toLowerCase().includes('chuck')) {
-        var chuckCheck = /\schuck\s/i
-        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
-    }
-    else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
+    
+        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
         let splitsaying = fullsaying.split(" ")
         let argumentsaying = splitsaying.slice(2)
@@ -69,6 +64,32 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send(stringargument)
 
     }
+    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+        var fma = Math.floor(Math.random() * 20)
+        if (fma == 5) {
+            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
+        else {
+            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
+    }   
+    else if (receivedMessage.content.toLowerCase().includes('dean')) {
+        var deanCheck = /\sdean\s/i
+        if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
+    }
+    else if (receivedMessage.content.toLowerCase().includes('john ')) {
+        receivedMessage.channel.send("Killingthatmannatural.")
+    }
+    else if (receivedMessage.content.toLowerCase().includes('sam ')) {
+        receivedMessage.channel.send("That's my bloodfreak-in-law!")
+    }
+
+    else if (receivedMessage.content.toLowerCase().includes('jack ')) {
+        receivedMessage.channel.send("Baby boy son boy.")
+    }
+   else if (receivedMessage.content.toLowerCase().includes('chuck')) {
+        var chuckCheck = /\schuck\s/i
+        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
+    }
+
     else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
         var feelings = Math.floor(Math.random() * 3)
         if (feelings == 0) {
@@ -81,39 +102,57 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send("...wig, I guess?")
        }
     }
+    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
+             var goodbot = Math.floor(Math.random() * 4)
+             if (goodbot == 0) {
+                 receivedMessage.channel.send("**Don't condescend to me.**")
+             }
+             if (goodbot == 1) {
+                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
+             }
+             if (goodbot == 2) {
+                 receivedMessage.channel.send("Good human.")
+             }
+             if (goodbot == 3) {
+                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
+             }
+}
+          
+    
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
-    else if (receivedMessage.content.toLowerCase().includes('cas')) {
-        var casCheck = /\scas\s/i
+    else if (receivedMessage.content.toLowerCase().includes('castiel')) {
         var reply = Math.floor(Math.random() * 50)
         if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
                receivedMessage.channel.send("👼")
         }
-        if (reply == 0) {
-            const attachment = new Discord.Attachment("https://i.imgur.com/0Js9tC3.jpg")
-            receivedMessage.channel.send(attachment)
-        }
-        if (reply == 1) {
-            const attachment = new Discord.Attachment("https://i.imgur.com/Me3VhgC.jpg")
-            receivedMessage.channel.send(attachment)
-        }
-        if (reply == 2) {
-            const attachment = new Discord.Attachment("https://i.imgur.com/y79VBsb.jpg")
-            receivedMessage.channel.send(attachment)
-        }
-        if (reply == 3) {
-            const attachment = new Discord.Attachment("https://i.imgur.com/mtCWX1E.jpg")
-            receivedMessage.channel.send(attachment)
-        }
-        if (reply == 4) {
-            const attachment = new Discord.Attachment("https://i.imgur.com/648t8Ms.jpg")
-            receivedMessage.channel.send(attachment)
-        }
-
-    } else if (receivedMessage.content.toLowerCase().includes(':screwdriver:')) {
+        if (reply == 0) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/0Js9tC3.jpg'] })
+    } 
+        if (reply == 1) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/Me3VhgC.jpg'] })
+    } 
+        if (reply == 2) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/y79VBsb.jpg'] })
+    } 
+        if (reply == 3) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/mtCWX1E.jpg'] })
+    } 
+        if (reply == 4) 
+          {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/648t8Ms.jpg'] })
+    } 
+    } 
+    
+    else if (receivedMessage.content.toLowerCase().includes('🪛')) {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
+                                                  
     else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
         var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
@@ -125,27 +164,6 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send(startEmoti)
         }
     }
-    // else if (receivedMessage.content.toLowerCase().includes(':)')) {
-    //     receivedMessage.channel.send(":)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':(')) {
-    //     receivedMessage.channel.send(":(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(';)')) {
-    //     receivedMessage.channel.send(";)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>)')) {
-    //     receivedMessage.channel.send(":<)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':>(')) {
-    //     receivedMessage.channel.send(":<(")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<)')) {
-    //     receivedMessage.channel.send(":>)")
-    // }
-    // else if (receivedMessage.content.toLowerCase().includes(':<(')) {
-    //     receivedMessage.channel.send(":>(")
-    // }
 
 })
 
@@ -158,15 +176,11 @@ function processCommand(receivedMessage) {
     if (primaryCommand == "cas") {
         helpCommand(arguments, receivedMessage)
     }
-    // if (primaryCommand == "castiel") {
-        // const expressionless = client.emojis.find(emoji => emoji.name === "expressionless");
-       // receivedMessage.channel.send(`${expressionless}`)
-    // }
 
     if (primaryCommand == "cass") {
         var cass = Math.floor(Math.random() * 2)
         if (cass == 0) {
-        receivedMessage.channel.send("I am not interested in being polite or heterosexual") }
+        receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
         if (cass == 1) {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
@@ -176,8 +190,9 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
         client.destroy()
     }
-    if (arguments.length == 0) {
+    else if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
+        return
     }
     else {
       arguments = arguments[0]
@@ -185,20 +200,197 @@ function helpCommand(arguments, receivedMessage) {
     if (arguments == "check") {
         receivedMessage.channel.send("I am online!")
     }
-    if (arguments == "hug") {
+    else if (arguments == "hug") {
         receivedMessage.channel.send("[hugs you back] :) I love you.")
-    }
-    if (arguments == "kiss") {
-        receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
-    }
-    if (arguments == "hold") {
-        receivedMessage.channel.send("[is hold]")
-    }
-    if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!cas talk: get a random Cas quote from canon\n!cas speak: get me to say something funny\n!cas bde: measure your big dick energy\n!cas bhe: measure your big hole energy\n!cas valid: learn how valid you are, objectively\n!cas death: learn the exact date and time of your own death\n!cas hug: give me a hug\n!cas kiss: give me a kiss\n!cas hold: hold me\n!cas feel: learn how I'm feeling\nYou can also make me say anything you want by typing 'cas say,' get my opinions by asking 'cas what do you think,' and I respond to my own name (plus a few others)!")
+        if (pegantNumerical == 0) {
+            //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
+                   }
+                   
+                       else {
+                        pegantNumerical = Math.floor(Math.random() * 80);
+                        casGestation(receivedMessage);
+               }
     }
 
-    if (arguments == "feel") {
+   else if (arguments == "kiss") {
+        receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
+        if (pegantNumerical == 0) {
+            //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
+                   }
+                   
+                       else {
+                        pegantNumerical = Math.floor(Math.random() * 60);
+                        casGestation(receivedMessage);
+               }
+    }
+
+   else if (arguments == "hold") {
+        receivedMessage.channel.send("[is hold]")
+    }
+   else if (arguments == "help") {
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
+    }
+    
+    else if (arguments == "birth") 
+      {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/kANqts7.jpg'] })
+    } 
+
+   else if (arguments == "poison") {
+       var poison = Math.floor(Math.random() * 5)
+       var usersend = receivedMessage.author.toString()
+       if (poison == 0) 
+                  {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/z4ZfUlA.jpg'] })
+    }
+       if (poison == 1) {
+           receivedMessage.channel.send("Your maid ouitfit looks lovely today," + usersend + ". Thank you so much for taking care of me!")
+       }
+       if (poison == 2) {
+           receivedMessage.channel.send("Could I please have some more soup, " + usersend + "? I'm sorry to be a bother.")
+       }
+       if (poison == 3) {
+           receivedMessage.channel.send("I'm so cold... could you lie down with me, " + usersend + "?") 
+       }
+       if (poison == 4) {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/1JAyyfz.jpg'] })
+       }
+   }
+    else if (arguments == "fuck") {
+       var fuck = Math.floor(Math.random() * 5)
+       if (fuck == 0) {
+        if (pegantNumerical == 0)
+        {    receivedMessage.channel.send("That's considerate of you. I've been insatiable during my pregnancy...")
+    }
+        else
+{           receivedMessage.channel.send("But I'm not ready to have a baby just yet...")
+       }
+       }
+       if (fuck == 1) {
+           receivedMessage.channel.send("Alright. Which one of us is going to wear the maid outfit?")
+       }
+       if (fuck == 2) {
+           receivedMessage.channel.send("Stop staring at my nipples!")
+       }
+       if (fuck == 3) {
+           receivedMessage.channel.send("Afterwards, please tell Dean about this, he'll get jealous and start biting me in public again.") 
+       }
+       if (fuck == 4) 
+        {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/BdvJyvL.jpg'] })
+    }
+        if (pegantNumerical == 0) {
+ //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can play!")        
+        }
+            else {
+                pegantNumerical = Math.floor(Math.random() * 11);
+                casGestation(receivedMessage);
+    }
+}
+   
+        else if (arguments == "baste") {
+       var baste = Math.floor(Math.random() * 5)
+       if (baste == 0) {
+           receivedMessage.channel.send("Modern technology can be its own miracle.")
+       }
+       if (baste == 1) {
+           receivedMessage.channel.send("You're suggesting that we employ a kitchen implement?")
+       }
+       if (baste == 2) {
+           receivedMessage.channel.send("I understand that there's a higher chance of multiples with these procedures...")
+       }
+       if (baste == 3) {
+           receivedMessage.channel.send("Oh........... I suppose this _is_ the most efficient method.") 
+       }
+       if (baste == 4) 
+        {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/CZ8YxGR.jpg']})
+        // ^ Kitten who appears to have face-planted into a meal bowl
+    }
+    if (baste == 5) 
+    {
+    receivedMessage.channel.send({ files: ['https://i.imgur.com/M0kvqfi.png']})
+    // ^ Image of a turkey baster
+}
+if (baste == 6) {
+    receivedMessage.channel.send("We have to repopulate the hive.")
+}
+    
+        if (pegantNumerical == 0) {
+ //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
+        }
+        
+            else {
+                pegantNumerical = Math.floor(Math.random() * 3);
+                casGestation(receivedMessage);
+}
+}
+    
+        else if (arguments == "womb") {
+            if (pegantNumerical == 0) {
+                var pregnancyAnnouncement = Math.floor(Math.random() * 6)
+                if (pregnancyAnnouncement == 0) {
+                    receivedMessage.channel.send("B̷A̷B̴Y̴ ̸S̵O̶O̸N̴")
+                }
+                if (pregnancyAnnouncement == 1) {
+                    receivedMessage.channel.send("A nephilim has come into being. It's the offspring of an angel and a human.")
+                }
+                if (pregnancyAnnouncement == 2) {
+                    receivedMessage.channel.send("Baby on board.")
+                }
+                if (pregnancyAnnouncement == 3)                  {
+                    receivedMessage.channel.send({ files: ['https://64.media.tumblr.com/a3fe3be97fb995ee924f1929dd880c74/990f11a826b3cc4f-63/s640x960/787d807daa8b4aa3b2730ed2bcb9f6df60d53aa0.gif']})
+                    // ^Leviathan pregancy
+                }
+                if (pregnancyAnnouncement == 4) 
+                 {
+                 receivedMessage.channel.send({ files: ['https://i.imgur.com/KHsqNP8.png']})
+                 // ^Edit of Castiel holding a positive pregnancy test. thanks jay.
+             }
+             if (pregnancyAnnouncement == 5) 
+             {
+                receivedMessage.channel.send({ files: ['https://i.imgur.com/zlnZWT1.png']})
+                // ^TBH Creature but round
+            }
+            }
+            else
+            {
+                var pregnancyAnnouncement = Math.floor(Math.random() * 5)
+                if (pregnancyAnnouncement == 0) {
+                    receivedMessage.channel.send("S̶O̸ ̴E̵M̶P̴T̷Y̸.̷")
+                }
+                if (pregnancyAnnouncement == 1) {
+                    receivedMessage.channel.send("We'll have to try harder if we're going to repopulate our forces... This could be serious.")
+                }
+                if (pregnancyAnnouncement == 2) {
+                    receivedMessage.channel.send("We need to redouble our efforts.")
+                }
+                if (pregnancyAnnouncement == 3)                  {
+                    receivedMessage.channel.send({ files: ['https://i.imgur.com/DmSkE7e.png']})
+                    // ^Arrow indicating spacious womb
+                }
+                if (pregnancyAnnouncement == 4) 
+                 {
+                 receivedMessage.channel.send({ files: ['https://i.imgur.com/mzYPavw.png']})
+                 // ^Tragically unfertilized
+             }
+            }
+}
+    
+            else if (arguments == "obgyn") {
+                //This is for admin/testing and doesn't appear in the help command
+                if (pegantNumerical == 0) {
+                    receivedMessage.channel.send("value is 0; cas is pregnant");
+                }
+                else if (0 < pegantNumerical && pegantNumerical < 20) {
+                    receivedMessage.channel.send("the value is " + pegantNumerical.toString() + " and so cas is not pregnant");
+                }
+                else {
+                    receivedMessage.channel.send("value is something else");
+                }
+    }
+    
+   else if (arguments == "feel") {
         var feel = Math.floor(Math.random() * 10)
         if (feel == 0) {
             receivedMessage.channel.send("I feel like murder is okay.")
@@ -233,7 +425,7 @@ function helpCommand(arguments, receivedMessage) {
     }
 
 
-    if (arguments == "talk") {
+    else if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
             receivedMessage.channel.send("I'm an angel, you ass. I don't have a soul.")
@@ -297,16 +489,16 @@ function helpCommand(arguments, receivedMessage) {
         }
     }
 
-    if (arguments == "speak") {
+    else if (arguments == "speak") {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
 
-    if (arguments ==  "random") {
+   else if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
     }
-    if (arguments == "bde") {
+    else if (arguments == "bde") {
         var bde = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
 //         if (usersend.includes("!")) {
@@ -319,12 +511,12 @@ function helpCommand(arguments, receivedMessage) {
 
     }
 
-    if (arguments == "bhe") {
+    else if (arguments == "bhe") {
         var bhe = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
         receivedMessage.channel.send("You, " + usersend + ", have exactly " + bhe + "% big hole energy!")
                                      }
-    if (arguments == "valid") {
+    else if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
         if (valid == 0) {
             receivedMessage.channel.send("You're nothing.")
@@ -342,7 +534,7 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You've got a nice cock.")
         }
     }
-    if (arguments == "death") {
+    else if (arguments == "death") {
         var hour = Math.floor(Math.random() * 24)
         var minute = Math.floor(Math.random() * 60)
         var seconds = Math.floor(Math.random() * 60)
@@ -394,17 +586,78 @@ function helpCommand(arguments, receivedMessage) {
             receivedMessage.channel.send("You will die on December " + day + " at " + hour + ":" + minute + ":" + seconds + " " + timezone + ", in the year of " + year + "!")
         }
     }
-    if (arguments == "lobotomy") {
+    else if (arguments == "lobotomy") {
       receivedMessage.channel.send(":eye::drop_of_blood::lips::drop_of_blood::eye:")
+    }
+     else if (arguments == "goodnight") {
+        var sleep = Math.floor(Math.random() * 3)
+        if (sleep == 0) 
+           {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/srChjJX.png'] })
+    } 
+         if (sleep == 1) 
+           {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/RZoL4KF.jpg'] })
+    } 
+         if (sleep == 2) 
+           {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/b5Kcsmy.jpg'] })
+    } 
     }
    else {
         receivedMessage.channel.send("I'm sorry, I don't recognize that command!")
     }
 }
 
+function casGestation (receivedMessage) {
+    if (pegantNumerical == 0) {
+// var nonbirthingParent = receivedMessage.author.toString()
+client.user.setActivity("at nesting.");
+setTimeout(function(){ 
+
+receivedMessage.channel.send("*Event*: Castiel is in labor");
+
+var birthEvent = Math.floor(Math.random() * 7);
+
+if (birthEvent == 0) {
+receivedMessage.channel.send("I became a father. And in that, I rediscovered my faith. I rediscovered who I am.")
+}
+if (birthEvent == 1) {
+receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱🐱")
+}
+if (birthEvent == 2) {
+receivedMessage.channel.send({ files: ['https://i.imgur.com/173yDa5.jpg']})
+//His litter
+}
+if (birthEvent == 3) {
+receivedMessage.channel.send({ files: ['https://i.imgur.com/MdbQONt.jpg']})
+//Picture of Cas and Jack hugging
+}
+if (birthEvent == 4) {
+receivedMessage.channel.send({ files: ['https://i.imgur.com/oDKH7Oo.png']})
+//Among Them
+}
+if (birthEvent == 5) {
+    receivedMessage.channel.send({ files: ['https://media.tenor.com/WO7Jr4uFUXMAAAAd/kittens-cat.gif']})
+    //Gif of a litter of kittens
+    }
+    if (birthEvent == 6) {
+        receivedMessage.channel.send({ files: ['https://i.imgur.com/yXuIDZY.png']})
+        //Picture of one small scrungly-looking kitten
+        }
+setTimeout(function(){
+receivedMessage.reply("thank you.");
+}, 5000)
+client.user.setActivity("at being a father.");
+pegantNumerical = 1;
+}, 10000)
+}
+else {
+}
+}
 
 function randomspeak() {
-    var talk2 = Math.floor(Math.random() * 102)
+    var talk2 = Math.floor(Math.random() * 103)
         if (talk2 == 0) {
             speak = "I'm the cunt you married! The only time you ever liked yourself was when you were trying to be someone this cunt might like! I'm not a quitter, I'm that CUNT. I've killed for you, who else can say that? You think you'd be happy with a nice Midwestern girl? No way, baby! I'm it."
         }
@@ -714,6 +967,9 @@ function randomspeak() {
         if (talk2 == 101) {
             speak = "[REDACTED]"
         }
+        if (talk2 == 102) { 
+            speak = "Oh, Dean... his nipple is out..."
+        }
 }
 
-client.login(token)
+client.login(token);
