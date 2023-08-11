@@ -220,13 +220,11 @@ function processCommand(receivedMessage) {
         if (cass == 1) {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
-}
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
         client.destroy()
     }
-    else if (arguments.length == 0) {
     else if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
         return
@@ -463,9 +461,6 @@ if (baste == 6) {
             receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
         }
     }
-
-
-    else if (arguments == "talk") {
     else if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
@@ -529,19 +524,15 @@ if (baste == 6) {
             receivedMessage.channel.send("Sam, of course, is an abomination.")
         }
     }
-
-    else if (arguments == "speak") {
     else if (arguments == "speak") {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
 
    else if (arguments ==  "random") {
-   else if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
     }
-    else if (arguments == "bde") {
     else if (arguments == "bde") {
         var bde = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
@@ -556,12 +547,10 @@ if (baste == 6) {
     }
 
     else if (arguments == "bhe") {
-    else if (arguments == "bhe") {
         var bhe = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
         receivedMessage.channel.send("You, " + usersend + ", have exactly " + bhe + "% big hole energy!")
                                      }
-    else if (arguments == "valid") {
     else if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
         if (valid == 0) {
@@ -580,7 +569,6 @@ if (baste == 6) {
             receivedMessage.channel.send("You've got a nice cock.")
         }
     }
-    else if (arguments == "death") {
     else if (arguments == "death") {
         var hour = Math.floor(Math.random() * 24)
         var minute = Math.floor(Math.random() * 60)
