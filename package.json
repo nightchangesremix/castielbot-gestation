@@ -9,7 +9,7 @@
   "main": "bot.js",
 
   "scripts": {
-    
+
     "start": "node bot.js"
 
   },
@@ -17,9 +17,12 @@
   "dependencies": {
 
     "discord.js": "11.5.1",
-    
-    "request": "2.81.0"
+
+    "dotenv": "^16.3.1",
+
+    "request": "^2.81.0"
 
   }
 
 }
+
