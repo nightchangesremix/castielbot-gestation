@@ -20,7 +20,6 @@ client.on('ready', () => {
 
 var pegantNumerical;
 
-
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
         return
@@ -289,7 +288,14 @@ function helpCommand(arguments, receivedMessage) {
 }
    
         else if (arguments == "baste") {
-       var baste = Math.floor(Math.random() * 5)
+            var usersend = receivedMessage.author.toString()
+            if (pegantNumerical == 0)
+            {
+                receivedMessage.channel.send("Thank you, " + usersend + ". I'll save this for later.")
+            }
+            else
+            {
+       var baste = Math.floor(Math.random() * 7)
        if (baste == 0) {
            receivedMessage.channel.send("Modern technology can be its own miracle.")
        }
@@ -315,12 +321,7 @@ function helpCommand(arguments, receivedMessage) {
 if (baste == 6) {
     receivedMessage.channel.send("We have to repopulate the hive.")
 }
-    
-        if (pegantNumerical == 0) {
- //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
-        }
-        
-            else {
+
                 pegantNumerical = Math.floor(Math.random() * 3);
                 casGestation(receivedMessage);
 }
@@ -382,7 +383,7 @@ if (baste == 6) {
                 if (pegantNumerical == 0) {
                     receivedMessage.channel.send("value is 0; cas is pregnant");
                 }
-                else if (0 < pegantNumerical && pegantNumerical < 20) {
+                else if (0 < pegantNumerical) {
                     receivedMessage.channel.send("the value is " + pegantNumerical.toString() + " and so cas is not pregnant");
                 }
                 else {
@@ -623,7 +624,7 @@ if (birthEvent == 0) {
 receivedMessage.channel.send("I became a father. And in that, I rediscovered my faith. I rediscovered who I am.")
 }
 if (birthEvent == 1) {
-receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱🐱")
+receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱")
 }
 if (birthEvent == 2) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/173yDa5.jpg']})
@@ -647,10 +648,10 @@ if (birthEvent == 5) {
         }
 setTimeout(function(){
 receivedMessage.reply("thank you.");
-}, 5000)
+}, 2000)
 client.user.setActivity("at being a father.");
 pegantNumerical = 1;
-}, 10000)
+}, 1200000)
 }
 else {
 }
