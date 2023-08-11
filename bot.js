@@ -70,6 +70,24 @@ client.on('message', (receivedMessage) => {
         else {
             receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
     }   
+    
+        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
+        let fullsaying = receivedMessage.content.substr(1)
+        let splitsaying = fullsaying.split(" ")
+        let argumentsaying = splitsaying.slice(2)
+        let stringargument = argumentsaying.toString()
+        let newchar = ' '
+        stringargument = stringargument.split(',').join(newchar)
+        receivedMessage.channel.send(stringargument)
+
+    }
+    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+        var fma = Math.floor(Math.random() * 20)
+        if (fma == 5) {
+            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
+        else {
+            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
+    }   
     else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
@@ -101,6 +119,23 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send("...wig, I guess?")
        }
     }
+    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
+             var goodbot = Math.floor(Math.random() * 4)
+             if (goodbot == 0) {
+                 receivedMessage.channel.send("**Don't condescend to me.**")
+             }
+             if (goodbot == 1) {
+                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
+             }
+             if (goodbot == 2) {
+                 receivedMessage.channel.send("Good human.")
+             }
+             if (goodbot == 3) {
+                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
+             }
+}
+          
+    
     else if (receivedMessage.content.toLowerCase().includes('good bot')) {
              var goodbot = Math.floor(Math.random() * 4)
              if (goodbot == 0) {
@@ -152,6 +187,7 @@ client.on('message', (receivedMessage) => {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
                                                   
+                                                  
     else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
         var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
@@ -180,6 +216,7 @@ function processCommand(receivedMessage) {
         var cass = Math.floor(Math.random() * 2)
         if (cass == 0) {
         receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
+        receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
         if (cass == 1) {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
@@ -190,7 +227,9 @@ function helpCommand(arguments, receivedMessage) {
         client.destroy()
     }
     else if (arguments.length == 0) {
+    else if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
+        return
         return
     }
     else {
@@ -427,6 +466,7 @@ if (baste == 6) {
 
 
     else if (arguments == "talk") {
+    else if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
             receivedMessage.channel.send("I'm an angel, you ass. I don't have a soul.")
@@ -491,14 +531,17 @@ if (baste == 6) {
     }
 
     else if (arguments == "speak") {
+    else if (arguments == "speak") {
         randomspeak()
         receivedMessage.channel.send(speak)
     }
 
    else if (arguments ==  "random") {
+   else if (arguments ==  "random") {
        randomsent()
         receivedMessage.channel.send(sent)
     }
+    else if (arguments == "bde") {
     else if (arguments == "bde") {
         var bde = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
@@ -513,10 +556,12 @@ if (baste == 6) {
     }
 
     else if (arguments == "bhe") {
+    else if (arguments == "bhe") {
         var bhe = Math.floor(Math.random() * 101)
         var usersend = receivedMessage.author.toString()
         receivedMessage.channel.send("You, " + usersend + ", have exactly " + bhe + "% big hole energy!")
                                      }
+    else if (arguments == "valid") {
     else if (arguments == "valid") {
         var valid = Math.floor(Math.random() * 5)
         if (valid == 0) {
@@ -535,6 +580,7 @@ if (baste == 6) {
             receivedMessage.channel.send("You've got a nice cock.")
         }
     }
+    else if (arguments == "death") {
     else if (arguments == "death") {
         var hour = Math.floor(Math.random() * 24)
         var minute = Math.floor(Math.random() * 60)
@@ -658,6 +704,7 @@ else {
 }
 
 function randomspeak() {
+    var talk2 = Math.floor(Math.random() * 103)
     var talk2 = Math.floor(Math.random() * 103)
         if (talk2 == 0) {
             speak = "I'm the cunt you married! The only time you ever liked yourself was when you were trying to be someone this cunt might like! I'm not a quitter, I'm that CUNT. I've killed for you, who else can say that? You think you'd be happy with a nice Midwestern girl? No way, baby! I'm it."
