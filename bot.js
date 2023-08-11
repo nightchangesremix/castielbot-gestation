@@ -693,7 +693,6 @@ else {
 
 function randomspeak() {
     var talk2 = Math.floor(Math.random() * 103)
-    var talk2 = Math.floor(Math.random() * 103)
         if (talk2 == 0) {
             speak = "I'm the cunt you married! The only time you ever liked yourself was when you were trying to be someone this cunt might like! I'm not a quitter, I'm that CUNT. I've killed for you, who else can say that? You think you'd be happy with a nice Midwestern girl? No way, baby! I'm it."
         }
