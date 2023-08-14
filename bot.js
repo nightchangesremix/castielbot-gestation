@@ -20,7 +20,6 @@ client.on('ready', () => {
 
 var pegantNumerical;
 
-
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
         return
@@ -53,6 +52,24 @@ client.on('message', (receivedMessage) => {
         var scalevar = Math.floor(Math.random() * 10) + 1
         receivedMessage.channel.send(scalevar)
     }
+    
+        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
+        let fullsaying = receivedMessage.content.substr(1)
+        let splitsaying = fullsaying.split(" ")
+        let argumentsaying = splitsaying.slice(2)
+        let stringargument = argumentsaying.toString()
+        let newchar = ' '
+        stringargument = stringargument.split(',').join(newchar)
+        receivedMessage.channel.send(stringargument)
+
+    }
+    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+        var fma = Math.floor(Math.random() * 20)
+        if (fma == 5) {
+            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
+        else {
+            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
+    }   
     
         else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
         let fullsaying = receivedMessage.content.substr(1)
@@ -119,6 +136,23 @@ client.on('message', (receivedMessage) => {
 }
           
     
+    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
+             var goodbot = Math.floor(Math.random() * 4)
+             if (goodbot == 0) {
+                 receivedMessage.channel.send("**Don't condescend to me.**")
+             }
+             if (goodbot == 1) {
+                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
+             }
+             if (goodbot == 2) {
+                 receivedMessage.channel.send("Good human.")
+             }
+             if (goodbot == 3) {
+                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
+             }
+}
+          
+    
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
@@ -153,6 +187,7 @@ client.on('message', (receivedMessage) => {
       receivedMessage.channel.send("Goodbye, stranger.")
     }
                                                   
+                                                  
     else {
         var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
         var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
@@ -181,10 +216,10 @@ function processCommand(receivedMessage) {
         var cass = Math.floor(Math.random() * 2)
         if (cass == 0) {
         receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
+        receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
         if (cass == 1) {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
-}
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
@@ -192,6 +227,7 @@ function helpCommand(arguments, receivedMessage) {
     }
     else if (arguments.length == 0) {
             receivedMessage.channel.send("Hello! Say `!cas help` for a list of commands.")
+        return
         return
     }
     else {
@@ -289,7 +325,14 @@ function helpCommand(arguments, receivedMessage) {
 }
    
         else if (arguments == "baste") {
-       var baste = Math.floor(Math.random() * 5)
+            var usersend = receivedMessage.author.toString()
+            if (pegantNumerical == 0)
+            {
+                receivedMessage.channel.send("Thank you, " + usersend + ". I'll save this for later.")
+            }
+            else
+            {
+       var baste = Math.floor(Math.random() * 7)
        if (baste == 0) {
            receivedMessage.channel.send("Modern technology can be its own miracle.")
        }
@@ -315,12 +358,7 @@ function helpCommand(arguments, receivedMessage) {
 if (baste == 6) {
     receivedMessage.channel.send("We have to repopulate the hive.")
 }
-    
-        if (pegantNumerical == 0) {
- //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
-        }
-        
-            else {
+
                 pegantNumerical = Math.floor(Math.random() * 3);
                 casGestation(receivedMessage);
 }
@@ -382,7 +420,7 @@ if (baste == 6) {
                 if (pegantNumerical == 0) {
                     receivedMessage.channel.send("value is 0; cas is pregnant");
                 }
-                else if (0 < pegantNumerical && pegantNumerical < 20) {
+                else if (0 < pegantNumerical) {
                     receivedMessage.channel.send("the value is " + pegantNumerical.toString() + " and so cas is not pregnant");
                 }
                 else {
@@ -423,8 +461,6 @@ if (baste == 6) {
             receivedMessage.channel.send("I feel confident, I feel sexy, I feel stupid!")
         }
     }
-
-
     else if (arguments == "talk") {
         var talk1 = Math.floor(Math.random() * 20)
         if (talk1 == 0) {
@@ -488,7 +524,6 @@ if (baste == 6) {
             receivedMessage.channel.send("Sam, of course, is an abomination.")
         }
     }
-
     else if (arguments == "speak") {
         randomspeak()
         receivedMessage.channel.send(speak)
@@ -623,7 +658,7 @@ if (birthEvent == 0) {
 receivedMessage.channel.send("I became a father. And in that, I rediscovered my faith. I rediscovered who I am.")
 }
 if (birthEvent == 1) {
-receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱🐱")
+receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱")
 }
 if (birthEvent == 2) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/173yDa5.jpg']})
@@ -647,10 +682,10 @@ if (birthEvent == 5) {
         }
 setTimeout(function(){
 receivedMessage.reply("thank you.");
-}, 5000)
+}, 2000)
 client.user.setActivity("at being a father.");
 pegantNumerical = 1;
-}, 10000)
+}, 1200000)
 }
 else {
 }
