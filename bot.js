@@ -366,7 +366,7 @@ function helpCommand(arguments, receivedMessage) {
     }
     if (fuck == 5) 
     {
-        receivedMessage.channel.send("Nurse roleplay and light domination?")
+        receivedMessage.channel.send("Nurse roleplay _and_ light domination?")
 }    
         if (pegantNumerical == 0) {
  //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can play!")        
@@ -417,7 +417,7 @@ if (baste == 6) {
 receivedMessage.channel.send("We have to repopulate the hive.")
 }
 if (baste == 7) {
-receivedMessage.channel.send("The instructions did say to be frutiful and multiply.")
+receivedMessage.channel.send("The instructions did say to be fruitful and multiply.")
 }
 if (baste == 8) {
 receivedMessage.channel.send("If we want a garden, we're going to have to sow the seeds.")
