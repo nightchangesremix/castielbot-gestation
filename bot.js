@@ -249,10 +249,10 @@ function processCommand(receivedMessage) {
         var cass = Math.floor(Math.random() * 2)
         if (cass == 0) {
         receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
-        receivedMessage.channel.send("I am not interested in being polite or heterosexual.") }
-        if (cass == 1) {
+        else {
             receivedMessage.channel.send("Who the hell is Cass?") }
     }
+}
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments == "failsafe") {
@@ -276,7 +276,7 @@ function helpCommand(arguments, receivedMessage) {
        }
         else { receivedMessage.channel.send("[hugs you back] :) I love you.")
         if (pegantNumerical == 0) {
-            //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
+            //           placeholder for acknowledging a pregnancy        
                    }
                    
                        else {
@@ -293,7 +293,7 @@ function helpCommand(arguments, receivedMessage) {
     else {
         receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
         if (pegantNumerical == 0) {
-            //           receivedMessage.channel.send("you should know that I'm already pregnant, but we can visit!")        
+            //           placeholder for acknowledging a pregnancy        
                    }
                    
                        else {
@@ -306,8 +306,26 @@ function helpCommand(arguments, receivedMessage) {
    else if (arguments == "hold") {
         receivedMessage.channel.send("[is hold]")
     }
+
+       else if (arguments == "bite") {
+       var bite = Math.floor(Math.random() * 4)
+
+       if (bite == 0) {
+           receivedMessage.channel.send("[gets chewed on and chewed on and chewed on]")
+       }
+       if (bite == 1) {
+           receivedMessage.channel.send("Is this... 'cuteness aggression'?")
+       }
+       if (bite == 2) {
+           receivedMessage.channel.send("Don't make me get the spray bottle.")
+       }
+       if (bite == 3) {
+           receivedMessage.channel.send("Are you hungry? You could have said something sooner.")
+       }
+    }
+
    else if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
     }
     
     else if (arguments == "birth") 
@@ -381,7 +399,7 @@ function helpCommand(arguments, receivedMessage) {
         else if (arguments == "baste") {
 if (maternalMortality == 0)
 {
-    receivedMessage.channel.send("That's thoughtful of you, but... I'm feeling to sick to have another litter right now...")
+    receivedMessage.channel.send("That's thoughtful of you, but... I'm feeling too sick to have another litter right now...")
 }
 else {            
 var usersend = receivedMessage.author.toString()
@@ -420,7 +438,7 @@ if (baste == 7) {
 receivedMessage.channel.send("The instructions did say to be fruitful and multiply.")
 }
 if (baste == 8) {
-receivedMessage.channel.send("If we want a garden, we're going to have to sow the seeds.")
+receivedMessage.channel.send("If we want a garden, we're going to have to sow the seed.")
 }
 if (baste == 9) {
 receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the turkey.")
@@ -777,7 +795,7 @@ if (maternalMortality === 0) {
             diedInChildbirth = true;
             client.user.setActivity("so long and goodnight");
             casResurrection(receivedMessage);
-        }, 45000)
+        }, 90000)
 
         receivedMessage.reply("thank you. They're so beautiful. Oh, but... I do feel so weak all of a sudden...");
         pegantNumerical = 136;
