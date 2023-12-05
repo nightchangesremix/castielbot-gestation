@@ -18,10 +18,11 @@ client.on('ready', () => {
     // })
 })
 
-var pegantNumerical;
+var pegantNumerical = 1;
 var diedInChildbirth = false;
 var maternalMortality = 1;
-
+var poisonHealth = 'healthy';
+var pregnancyTrimester = 0;
 
 client.on('message', (receivedMessage) => {
     if (diedInChildbirth === false) {
@@ -75,35 +76,18 @@ client.on('message', (receivedMessage) => {
             receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
     }   
     
-        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
-        let fullsaying = receivedMessage.content.substr(1)
-        let splitsaying = fullsaying.split(" ")
-        let argumentsaying = splitsaying.slice(2)
-        let stringargument = argumentsaying.toString()
-        let newchar = ' '
-        stringargument = stringargument.split(',').join(newchar)
-        receivedMessage.channel.send(stringargument)
-
-    }
-    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
-        var fma = Math.floor(Math.random() * 20)
-        if (fma == 5) {
-            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
-        else {
-            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
-    }   
     else if (receivedMessage.content.toLowerCase().includes('dean')) {
         var deanCheck = /\sdean\s/i
         if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
     }
-    else if (receivedMessage.content.toLowerCase().includes('john ')) {
+    else if (receivedMessage.content.toLowerCase().includes('john')) {
         receivedMessage.channel.send("Killingthatmannatural.")
     }
-    else if (receivedMessage.content.toLowerCase().includes('sam ')) {
+    else if (receivedMessage.content.toLowerCase().includes('sam')) {
         receivedMessage.channel.send("That's my bloodfreak-in-law!")
     }
 
-    else if (receivedMessage.content.toLowerCase().includes('jack ')) {
+    else if (receivedMessage.content.toLowerCase().includes('jack')) {
         receivedMessage.channel.send("Baby boy son boy.")
     }
    else if (receivedMessage.content.toLowerCase().includes('chuck')) {
@@ -139,23 +123,6 @@ client.on('message', (receivedMessage) => {
              }
             }
 
-    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
-             var goodbot = Math.floor(Math.random() * 4)
-             if (goodbot == 0) {
-                 receivedMessage.channel.send("**Don't condescend to me.**")
-             }
-             if (goodbot == 1) {
-                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
-             }
-             if (goodbot == 2) {
-                 receivedMessage.channel.send("Good human.")
-             }
-             if (goodbot == 3) {
-                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
-             }
-}
-          
-    
     else if (receivedMessage.content.includes('Castiel!')) {
         receivedMessage.channel.send("That's me!")
     }
@@ -281,14 +248,14 @@ function helpCommand(arguments, receivedMessage) {
                    
                        else {
                         pegantNumerical = Math.floor(Math.random() * 60);
-                        casGestation(receivedMessage);
+                        casFirstTrimester(receivedMessage);
                }
             }
     }
 
    else if (arguments == "kiss") {
     if (maternalMortality == 0) {
-        receivedMessage.channel.send("I know it isn't very much like me, but I don't think I'm in the mood right now... I've felt so sick lately...")
+        receivedMessage.channel.send("Mwah! One for the road.")
     }
     else {
         receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
@@ -298,7 +265,7 @@ function helpCommand(arguments, receivedMessage) {
                    
                        else {
                         pegantNumerical = Math.floor(Math.random() * 50);
-                        casGestation(receivedMessage);
+                        casFirstTrimester(receivedMessage);
                }
     }
 }
@@ -334,6 +301,12 @@ function helpCommand(arguments, receivedMessage) {
     } 
 
    else if (arguments == "poison") {
+    if (pegantNumerical == 0) {
+        var miscarriageChance = Math.floor(Math.random() * 14)
+        if (miscarriageChance == 0) {
+            poisonHealth = 'poisoned';
+        }
+    }
        var poison = Math.floor(Math.random() * 5)
        var usersend = receivedMessage.author.toString()
        if (poison == 0) 
@@ -391,7 +364,7 @@ function helpCommand(arguments, receivedMessage) {
         }
             else {
                 pegantNumerical = Math.floor(Math.random() * 11);
-                casGestation(receivedMessage);
+                casFirstTrimester(receivedMessage);
     }
 }
 }
@@ -444,7 +417,7 @@ if (baste == 9) {
 receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the turkey.")
 }
                 pegantNumerical = Math.floor(Math.random() * 3);
-                casGestation(receivedMessage);
+                casFirstTrimester(receivedMessage);
 }
 }
 }
@@ -454,8 +427,8 @@ receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the tu
             {
                 receivedMessage.channel.send("I don't think I can get pregnant right now... something feels wrong...")
             }
-            else if (pegantNumerical == 0) {
-                var pregnancyAnnouncement = Math.floor(Math.random() * 6)
+            else if (pegantNumerical == 0 && pregnancyTrimester != 1) {
+                var pregnancyAnnouncement = Math.floor(Math.random() * 7)
                 if (pregnancyAnnouncement == 0) {
                     receivedMessage.channel.send("B̷A̷B̴Y̴ ̸S̵O̶O̸N̴")
                 }
@@ -479,6 +452,12 @@ receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the tu
                 receivedMessage.channel.send({ files: ['https://i.imgur.com/zlnZWT1.png']})
                 // ^TBH Creature but round
             }
+            if (pregnancyAnnouncement == 6) 
+            {
+               receivedMessage.channel.send({ files: ['https://i.imgur.com/tchVyBx.jpg']})
+               // ^Pregnant Castiel TBH Creature edit
+               // original: https://www.tumblr.com/castielpegs/679029537149943808
+           }            
             }
             else
             {
@@ -511,7 +490,7 @@ receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the tu
             else if (arguments == "obgyn") {
                 //This is for admin/testing and doesn't appear in the help command
                 if (pegantNumerical == 0) {
-                    receivedMessage.channel.send("value is 0; cas is pregnant");
+                    receivedMessage.channel.send("value is 0; cas is pregnant. his womb is " + poisonHealth + " and the current trimester is " + pregnancyTrimester);
                 }
                 else if (0 < pegantNumerical < 100) {
                     receivedMessage.channel.send("the value is " + pegantNumerical.toString() + " and so cas is not pregnant");
@@ -742,18 +721,55 @@ receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the tu
     }
 }
 
-function casGestation (receivedMessage) {
-    if (pegantNumerical == 0) {
-// var nonbirthingParent = receivedMessage.author.toString()
-client.user.setActivity("at nesting.");
+function casFirstTrimester (receivedMessage) {
+    if (pegantNumerical == 0)
+    {
+    pregnancyTrimester = 1;
+    client.user.setActivity("at nesting.");
+//    receivedMessage.channel.send("This is when the pregnancy test returns a false negative.");
+    setTimeout(function(){ 
+        if (poisonHealth == 'healthy')
+        {
+        casSecondTrimester(receivedMessage);
+        }
+        else {
+        casMiscarriage(receivedMessage);
+        }
+    }, 360000)   
+    }
+}
+
+function casSecondTrimester (receivedMessage) {
+    if (pegantNumerical == 0)
+    {
+    pregnancyTrimester = 2;
+ //   receivedMessage.channel.send("This is when the pregnancy test starts working.");
+    setTimeout(function(){ 
+        if (poisonHealth == 'healthy')
+        {
+        casThirdTrimester(receivedMessage);
+        }
+        else {
+        casMiscarriage(receivedMessage);
+        }
+    }, 360000)   
+    }
+}
+
+function casThirdTrimester (receivedMessage) {
+
+pregnancyTrimester = 2;
 
 setTimeout(function(){ 
 
+    if (poisonHealth == 'healthy') {
 receivedMessage.channel.send("*Event*: Castiel is in labor.");
 
 var birthEvent = Math.floor(Math.random() * 8);
 
 if (birthEvent == 0) {
+receivedMessage.channel.send({ files: ['https://i.imgur.com/pFfrlqF.jpg']})
+// zo's edit of Castiel with 9 identical scrungy gray kittens 
 receivedMessage.channel.send("I became a father. And in that, I rediscovered my faith. I rediscovered who I am.")
 }
 if (birthEvent == 1) {
@@ -786,7 +802,7 @@ receivedMessage.channel.send({ files: ['https://i.imgur.com/2Z5TCnw.png']})
 
 client.user.setActivity("at being a father.");
 
-maternalMortality = Math.floor(Math.random() * 17)
+maternalMortality = Math.floor(Math.random() * 14)
 
 if (maternalMortality === 0) {
     setTimeout(function(){
@@ -795,7 +811,7 @@ if (maternalMortality === 0) {
             diedInChildbirth = true;
             client.user.setActivity("so long and goodnight");
             casResurrection(receivedMessage);
-        }, 90000)
+        }, 120000)
 
         receivedMessage.reply("thank you. They're so beautiful. Oh, but... I do feel so weak all of a sudden...");
         pegantNumerical = 136;
@@ -820,10 +836,38 @@ else {
         pegantNumerical = 1;
         }, 4000)
 }
-}, 1080000)   
-}
-    else {
     }
+    else {
+        casMiscarriage(receivedMessage);
+    }
+}, 360000)   
+}
+
+function casMiscarriage (receivedMessage) {
+pegantNumerical = 1;
+poisonHealth = 'healthy';
+pregnancyTrimester = 0;
+
+receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
+
+var miscarriageMonologue = Math.floor(Math.random() * 3);
+
+if (miscarriageMonologue == 0) {
+receivedMessage.channel.send("I just haven't been feeling well lately...")
+}
+
+if (miscarriageMonologue == 1) {
+receivedMessage.channel.send("Oh no... I was so excited for the baby...")
+}
+
+if (miscarriageMonologue == 2) {
+receivedMessage.channel.send("Why...? Perhaps it's fate...")
+}
+
+if (miscarriageMonologue == 3) {
+receivedMessage.channel.send(usersend + "... I'm sorry. I wasn't strong enough.")
+}
+client.user.setActivity("at empty womb hysteria.");
 }
 
 function casResurrection (receivedMessage) {
