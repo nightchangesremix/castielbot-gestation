@@ -758,7 +758,7 @@ function casSecondTrimester (receivedMessage) {
 
 function casThirdTrimester (receivedMessage) {
 
-pregnancyTrimester = 2;
+pregnancyTrimester = 3;
 
 setTimeout(function(){ 
 
@@ -848,8 +848,6 @@ pegantNumerical = 1;
 poisonHealth = 'healthy';
 pregnancyTrimester = 0;
 
-receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
-
 var miscarriageMonologue = Math.floor(Math.random() * 3);
 
 if (miscarriageMonologue == 0) {
@@ -867,6 +865,7 @@ receivedMessage.channel.send("Why...? Perhaps it's fate...")
 if (miscarriageMonologue == 3) {
 receivedMessage.channel.send(usersend + "... I'm sorry. I wasn't strong enough.")
 }
+receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
 client.user.setActivity("at empty womb hysteria.");
 }
 
