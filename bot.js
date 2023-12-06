@@ -844,9 +844,6 @@ else {
 }
 
 function casMiscarriage (receivedMessage) {
-pegantNumerical = 1;
-poisonHealth = 'healthy';
-pregnancyTrimester = 0;
 
 var miscarriageMonologue = Math.floor(Math.random() * 3);
 
@@ -866,7 +863,13 @@ if (miscarriageMonologue == 3) {
 receivedMessage.channel.send(usersend + "... I'm sorry. I wasn't strong enough.")
 }
 receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
+setTimeout(function(){
 client.user.setActivity("at empty womb hysteria.");
+pegantNumerical = 1;
+poisonHealth = 'healthy';
+pregnancyTrimester = 0;
+receivedMessage.channel.send("*Event*: Castiel is no longer pregnant. Castiel is now hysterical with grief.");
+}, 5000)
 }
 
 function casResurrection (receivedMessage) {
