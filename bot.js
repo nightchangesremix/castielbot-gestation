@@ -291,8 +291,72 @@ function helpCommand(arguments, receivedMessage) {
        }
     }
 
+
+    else if (arguments == "milkies") {
+        var milkies = Math.floor(Math.random() * 18)
+ 
+        if (milkies == 0) {
+            receivedMessage.channel.send("I know it's you, breastfeeding anon.")
+        }
+        if (milkies == 1) {
+            receivedMessage.channel.send("Got milk?")
+        }
+        if (milkies == 2) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/uAKsj0Z.png'] })
+            //An edit of the cow hybrid BTS tweet
+        }
+        if (milkies == 3) {
+            receivedMessage.channel.send("Are you thirsty? You could have said something sooner.")
+        }
+        if (milkies == 4) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/KGE3H59.gif'] })
+            //A gif of a kitten wiggling their ears while being bottle-fed
+        }
+        if (milkies == 5) {
+            receivedMessage.channel.send('Is this what Dean meant by "cow-boy kink"?')
+        }
+        if (milkies == 6) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/6cCFtFS.png'] })
+            //An edit of the "eggnog from my creature" reddit post
+        }
+        if (milkies == 7) {
+            receivedMessage.channel.send("[breastfeeds you]")
+        }
+        if (milkies == 8) {
+            receivedMessage.channel.send("They that cometh to me shall never hunger, and they that believeth in me shall never thirst.")
+        }
+        if (milkies == 9) {
+            receivedMessage.channel.send("I believe the machine is broken. We'll have to proceed... _manually_.")
+        }
+        if (milkies == 10) {
+            receivedMessage.channel.send("This is really supposed to be for the baby, you know... Well. I guess I could spare a _little_...")
+        }
+        if (milkies == 11) {
+            receivedMessage.channel.send("You'd help me? The baby's been having trouble getting a latch lately... 🥺")
+        }
+        if (milkies == 12) {
+            receivedMessage.channel.send("I accept. But, please be gentle. My nipples are sore...")
+        }
+        if (milkies == 13) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/JKGYNfW.jpeg'] })
+            //Tumblr user bimbodean's Castiel Big Naturals edit
+        }
+        if (milkies == 14) {
+            receivedMessage.channel.send("Alright... But no biting this time, please.")
+        }
+        if (milkies == 15) {
+            receivedMessage.channel.send("Thank you... My breasts were getting so heavy and full.")
+        }
+        if (milkies == 16) {
+            receivedMessage.channel.send("Are you familiar with the health benefits of breastmilk?")
+        }
+        if (milkies == 17) {
+            receivedMessage.channel.send("I'd like to have your feedback on the taste. Dean's been daydreaming about opening a microdairy...")
+        }
+     }
+
    else if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas milkies`: join the queue to be nursed\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
     }
     
     else if (arguments == "birth") 
@@ -845,7 +909,9 @@ else {
 
 function casMiscarriage (receivedMessage) {
 
-var miscarriageMonologue = Math.floor(Math.random() * 3);
+    receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
+
+    var miscarriageMonologue = Math.floor(Math.random() * 3);
 
 if (miscarriageMonologue == 0) {
 receivedMessage.channel.send("I just haven't been feeling well lately...")
@@ -862,7 +928,6 @@ receivedMessage.channel.send("Why...? Perhaps it's fate...")
 if (miscarriageMonologue == 3) {
 receivedMessage.channel.send(usersend + "... I'm sorry. I wasn't strong enough.")
 }
-receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
 setTimeout(function(){
 client.user.setActivity("at empty womb hysteria.");
 pegantNumerical = 1;
