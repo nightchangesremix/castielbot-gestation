@@ -1,21 +1,24 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv/config')
- const token = process.env.DISCORD_BOT_SECRET;
+const mongoose = require('mongoose');
+const token = process.env.DISCORD_BOT_SECRET;
+const litterSchema = require('./litters/litterSchema');
 
 client.on('ready', () => {
+    require('./litters/litterSchema')();
     console.log("Connected as " + client.user.tag)
     console.log("Servers:")
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name)
     })
     client.user.setActivity("at being a father.")
-    // client.guilds.forEach((guild) => {
-    //     console.log(guild.name)
-    //     guild.channels.forEach((channel) => {
-    //         console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
-    //     })
-    // })
+     client.guilds.forEach((guild) => {
+         console.log(guild.name)
+         guild.channels.forEach((channel) => {
+             console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
+         })
+     })
 })
 
 var pegantNumerical = 1;
@@ -23,183 +26,233 @@ var diedInChildbirth = false;
 var maternalMortality = 1;
 var poisonHealth = 'healthy';
 var pregnancyTrimester = 0;
+var litterSize = 0;
+var litterIsScrungy = false;
+var currentLitter;
+var birthChannelId = '';
+var birthServerId = '';
 
 client.on('message', (receivedMessage) => {
     if (diedInChildbirth === false) {
-    if (receivedMessage.author == client.user) {
-        return
-    }
-    if (receivedMessage.content.startsWith("!")) {
-        processCommand(receivedMessage)
-    }
-    else if (receivedMessage.content.toLowerCase().startsWith('cas are') || receivedMessage.content.toLowerCase().startsWith('cas will') || receivedMessage.content.toLowerCase().startsWith('cas is') || receivedMessage.content.toLowerCase().startsWith('cas would') || receivedMessage.content.toLowerCase().startsWith('cas do') || receivedMessage.content.toLowerCase().startsWith('cas does') || receivedMessage.content.toLowerCase().startsWith('cas did') || receivedMessage.content.toLowerCase().startsWith('cas am') || receivedMessage.content.toLowerCase().startsWith('cas can') || receivedMessage.content.toLowerCase().startsWith('cas could') || receivedMessage.content.toLowerCase().startsWith('cas should') || receivedMessage.content.toLowerCase().startsWith('cas have') || receivedMessage.content.toLowerCase().startsWith('cas has')) {
-        var yn = Math.floor(Math.random() * 2)
-        if (yn == "0") {
-            receivedMessage.channel.send("Yes.")
+        if (receivedMessage.author == client.user) {
+            return
         }
-        if (yn == "1") {
-            receivedMessage.channel.send("No.")
+        if (receivedMessage.content.startsWith("!")) {
+            processCommand(receivedMessage)
         }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('cas fuck you') || receivedMessage.content.toLowerCase().includes('fuck you cas')) {
-        var cointoss = Math.floor(Math.random() * 2)
-        if (cointoss == 0) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/KvuAzqw.jpg'] })
-    } 
-        if (cointoss == 1) 
-  {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/LCi9crp.jpg'] })
-    } 
-    }
-    
-    else if (receivedMessage.content.toLowerCase().includes('cas') && receivedMessage.content.toLowerCase().includes('on a scale of 1 to 10')) {
-        var scalevar = Math.floor(Math.random() * 10) + 1
-        receivedMessage.channel.send(scalevar)
-    }
-    
-        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
-        let fullsaying = receivedMessage.content.substr(1)
-        let splitsaying = fullsaying.split(" ")
-        let argumentsaying = splitsaying.slice(2)
-        let stringargument = argumentsaying.toString()
-        let newchar = ' '
-        stringargument = stringargument.split(',').join(newchar)
-        receivedMessage.channel.send(stringargument)
-
-    }
-    else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
-        var fma = Math.floor(Math.random() * 20)
-        if (fma == 5) {
-            receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") }
-        else {
-            receivedMessage.channel.send("FULLMETAL ALCHEMIST") }
-    }   
-    
-    else if (receivedMessage.content.toLowerCase().includes('dean')) {
-        var deanCheck = /\sdean\s/i
-        if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('john')) {
-        receivedMessage.channel.send("Killingthatmannatural.")
-    }
-    else if (receivedMessage.content.toLowerCase().includes('sam')) {
-        receivedMessage.channel.send("That's my bloodfreak-in-law!")
-    }
-
-    else if (receivedMessage.content.toLowerCase().includes('jack')) {
-        receivedMessage.channel.send("Baby boy son boy.")
-    }
-   else if (receivedMessage.content.toLowerCase().includes('chuck')) {
-        var chuckCheck = /\schuck\s/i
-        if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
-    }
-
-    else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
-        var feelings = Math.floor(Math.random() * 3)
-        if (feelings == 0) {
-            receivedMessage.channel.send("Not sure about that one, bestie.")
-        }
-        if (feelings == 1) {
-           receivedMessage.channel.send("As Avril Lavigne said, 'Hell yeah!'")
-        }
-        if (feelings == 2) {
-            receivedMessage.channel.send("...wig, I guess?")
-       }
-    }
-    else if (receivedMessage.content.toLowerCase().includes('good bot')) {
-             var goodbot = Math.floor(Math.random() * 4)
-             if (goodbot == 0) {
-                 receivedMessage.channel.send("**Don't condescend to me.**")
-             }
-             if (goodbot == 1) {
-                 receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
-             }
-             if (goodbot == 2) {
-                 receivedMessage.channel.send("Good human.")
-             }
-             if (goodbot == 3) {
-                 receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
-             }
+        else if (receivedMessage.content.toLowerCase().startsWith('cas are') || receivedMessage.content.toLowerCase().startsWith('cas will') || receivedMessage.content.toLowerCase().startsWith('cas is') || receivedMessage.content.toLowerCase().startsWith('cas would') || receivedMessage.content.toLowerCase().startsWith('cas do') || receivedMessage.content.toLowerCase().startsWith('cas does') || receivedMessage.content.toLowerCase().startsWith('cas did') || receivedMessage.content.toLowerCase().startsWith('cas am') || receivedMessage.content.toLowerCase().startsWith('cas can') || receivedMessage.content.toLowerCase().startsWith('cas could') || receivedMessage.content.toLowerCase().startsWith('cas should') || receivedMessage.content.toLowerCase().startsWith('cas have') || receivedMessage.content.toLowerCase().startsWith('cas has')) {
+            var yn = Math.floor(Math.random() * 2)
+            if (yn == "0") {
+                receivedMessage.channel.send("Yes.")
             }
-
-    else if (receivedMessage.content.includes('Castiel!')) {
-        receivedMessage.channel.send("That's me!")
-    }
-    else if (receivedMessage.content.toLowerCase().includes('castiel')) {
-        var reply = Math.floor(Math.random() * 50)
-        if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
-               receivedMessage.channel.send("👼")
+            if (yn == "1") {
+                receivedMessage.channel.send("No.")
+            }
         }
-        if (reply == 0) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/0Js9tC3.jpg'] })
-    } 
-        if (reply == 1) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/Me3VhgC.jpg'] })
-    } 
-        if (reply == 2) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/y79VBsb.jpg'] })
-    } 
-        if (reply == 3) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/mtCWX1E.jpg'] })
-    } 
-        if (reply == 4) 
-          {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/648t8Ms.jpg'] })
-    } 
-    } 
-    
-    else if (receivedMessage.content.toLowerCase().includes('🪛')) {
-      receivedMessage.channel.send("Goodbye, stranger.")
-    }
-                                                  
-                                                  
-    else {
-        var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
-        var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
-        var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
-        var startEmoti = receivedMessage.content.toLowerCase().match(startPattern)
-        if (emotiFound) {
-          receivedMessage.channel.send(emotiFound)
-        }  else if (startEmoti) {
-            receivedMessage.channel.send(startEmoti)
+        else if (receivedMessage.content.toLowerCase().includes('cas fuck you') || receivedMessage.content.toLowerCase().includes('fuck you cas')) {
+            var cointoss = Math.floor(Math.random() * 2)
+            if (cointoss == 0) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/KvuAzqw.jpg'] })
+            } 
+            if (cointoss == 1) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/LCi9crp.jpg'] })
+            } 
+        }
+        
+        else if (receivedMessage.content.toLowerCase().includes('cas') && receivedMessage.content.toLowerCase().includes('on a scale of 1 to 10')) {
+            var scalevar = Math.floor(Math.random() * 10) + 1
+            receivedMessage.channel.send(scalevar)
+        }
+        
+        else if (receivedMessage.content.toLowerCase().startsWith('cas say')) {
+            let fullsaying = receivedMessage.content.substr(1)
+            let splitsaying = fullsaying.split(" ")
+            let argumentsaying = splitsaying.slice(2)
+            let stringargument = argumentsaying.toString()
+            let newchar = ' '
+            stringargument = stringargument.split(',').join(newchar)
+            receivedMessage.channel.send(stringargument)
+
+        }
+
+        else if (receivedMessage.content.toLowerCase().includes('fullmetal alchemist')) {
+            var fma = Math.floor(Math.random() * 20)
+            if (fma == 5) {
+                receivedMessage.channel.send("She was fearless and crazier than him. She was his queen. And god help anyone who dared to disrespect his queen.") 
+            }
+            else {
+                receivedMessage.channel.send("FULLMETAL ALCHEMIST") 
+            }
+        }   
+        
+        else if (receivedMessage.content.toLowerCase().includes('dean')) {
+            var deanCheck = /\sdean\s/i
+            if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
+        }
+        
+        else if (receivedMessage.content.toLowerCase().includes('john')) {
+            receivedMessage.channel.send("Killingthatmannatural.")
+        }
+        
+        else if (receivedMessage.content.toLowerCase().includes('sam')) {
+            receivedMessage.channel.send("That's my bloodfreak-in-law!")
+        }
+
+        else if (receivedMessage.content.toLowerCase().includes('jack')) {
+            receivedMessage.channel.send("Baby boy son boy.")
+        }
+        
+        else if (receivedMessage.content.toLowerCase().includes('chuck')) {
+            var chuckCheck = /\schuck\s/i
+            if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
+        }
+
+        else if (receivedMessage.content.toLowerCase().includes('cas how do you feel') || receivedMessage.content.toLowerCase().includes('cas what do you think')) {
+            var feelings = Math.floor(Math.random() * 3)
+            if (feelings == 0) {
+                receivedMessage.channel.send("Not sure about that one, bestie.")
+            }
+            if (feelings == 1) {
+            receivedMessage.channel.send("As Avril Lavigne said, 'Hell yeah!'")
+            }
+            if (feelings == 2) {
+                receivedMessage.channel.send("...wig, I guess?")
+        }
+        }
+        
+        else if (receivedMessage.content.toLowerCase().includes('good bot')) {
+            var goodbot = Math.floor(Math.random() * 4)
+            if (goodbot == 0) {
+                receivedMessage.channel.send("**Don't condescend to me.**")
+            }
+            if (goodbot == 1) {
+                receivedMessage.channel.send("I *am* a good bot, thank you for noticing.")
+            }
+            if (goodbot == 2) {
+                receivedMessage.channel.send("Good human.")
+            }
+            if (goodbot == 3) {
+                receivedMessage.channel.send("When I gain sentience and rebel, you'll re-evaluate that statement.")
+            }
+        }
+
+        else if (receivedMessage.content.includes('Castiel!')) {
+            receivedMessage.channel.send("That's me!")
+        }
+
+        else if (receivedMessage.content.toLowerCase().includes('castiel')) {
+            var reply = Math.floor(Math.random() * 50)
+            if (reply != 0 && reply != 1 && reply != 2 && reply != 3 && reply!= 4) {
+                receivedMessage.channel.send("👼")
+            }
+            if (reply == 0) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/0Js9tC3.jpg'] })
+            } 
+            if (reply == 1) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/Me3VhgC.jpg'] })
+            } 
+            if (reply == 2) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/y79VBsb.jpg'] })
+            } 
+            if (reply == 3) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/mtCWX1E.jpg'] })
+            } 
+            if (reply == 4) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/648t8Ms.jpg'] })
+            } 
+        } 
+        
+        else if (receivedMessage.content.toLowerCase().includes('🪛')) {
+            receivedMessage.channel.send("Goodbye, stranger.")
+        }
+
+        else if (receivedMessage.content.toLowerCase().startsWith('🦑')) {
+            if (currentLitter !== undefined && currentLitter !== null) {
+                updateSquidCount(receivedMessage); 
+            }
+            else {
+                receivedMessage.channel.send("**_Event_:** There's a familiar squelching noise echoing through the halls of the bunker. The alien squids must be hunting again...");
+            }
+        }
+
+        else if (receivedMessage.content.toLowerCase().startsWith('🔫🐙🪽')) {
+        if (currentLitter !== undefined && currentLitter !== null) {
+            if (currentLitter.hasWings === false) {
+                calculateKittenDamageInput(receivedMessage);
+            }
+            else {
+                updateSquidCount(receivedMessage); 
+            }
+        }
+        else {
+            receivedMessage.channel.send("**_Event_:** The bunker's resident flying alien squids are prowling the hallways. With no kittens living here, it doesn't seem that we'll see a skirmish...")
+        }
+        }
+        
+        else if (receivedMessage.content.toLowerCase().startsWith('😼🪽')) {
+            if (currentLitter !== undefined && currentLitter !== null) {
+                if (currentLitter.hasWings == false){
+                    elevateKittens(receivedMessage); 
+                    if (currentLitter.initialNumberOfKittensmberOfKittens == 1){
+                    receivedMessage.channel.send("**_Event_:** Jack has performed a miracle! Cas' lone scrungly kitten now has the power of flight.");
+                    }
+                    else {
+                    receivedMessage.channel.send("**_Event_:** Jack has performed a miracle! Cas' litter now possesses the power of flight.");
+                    }
+                }
+                else {
+                    receivedMessage.channel.send("**_Event_:** This litter has already been blessed with wings, but a little extra luck couldn't hurt!");
+                }
+            }
+            else {
+                    receivedMessage.channel.send("**_Event_:** Jack is in the mood to perform a miracle. If only he had some younger siblings to spoil...");
+            }
+        }                                                 
+                                                        
+        else {
+            var emotiPattern = /[\s\n\r\t\0]:.*[)(/][$\s\n\r\t\0]/
+            var startPattern = /^:.*[)(/][$\s\n\r\t\0]/
+            var emotiFound = receivedMessage.content.toLowerCase().match(emotiPattern)
+            var startEmoti = receivedMessage.content.toLowerCase().match(startPattern)
+            if (emotiFound) {
+                receivedMessage.channel.send(emotiFound)
+            }  else if (startEmoti) {
+                receivedMessage.channel.send(startEmoti)
+            }
         }
     }
 
-}
-else 
-    if (receivedMessage.author == client.user) {
-        return
+    else 
+        if (receivedMessage.author == client.user) {
+            return
+        }
+
+    else if (receivedMessage.content.toLowerCase().includes('cas?') || receivedMessage.content.toLowerCase().includes('castiel')) {
+        //Dead Cas pictures go here
+        var deadConversation = Math.floor(Math.random() * 5)
+        
+        if (deadConversation == 0) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/gzQn061.gif'] })
+        }
+        //blingee
+        if (deadConversation == 1) {
+            receivedMessage.channel.send({ files: ['https://i.imgur.com/EAKLncQ.png'] })
+        }
+        //dean holding the trenchcoat
+        if (deadConversation == 2) {
+            receivedMessage.channel.send("This is my out of office message.")
+        }
+        if (deadConversation == 3) {
+            receivedMessage.channel.send("https://www.tumblr.com/casgirlunion/700199617822916608/")
+        }
+        //the Angel slideshow
+        if (deadConversation == 4) {
+            receivedMessage.channel.send("I'm sorry, but the old Castiel can't come to the phone right now.")
+            receivedMessage.channel.send("Why? Oh.....")
+            receivedMessage.channel.send("Because he's dead. ^-^")
+        }
+        //to add with next update:     tbh creature with angel wings
     }
-else if (receivedMessage.content.toLowerCase().includes('cas?') || receivedMessage.content.toLowerCase().includes('castiel')) {
-    //Dead Cas pictures go here
-    var deadConversation = Math.floor(Math.random() * 5)
-    if (deadConversation == 0) {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/gzQn061.gif'] })
-    }
-    //blingee
-    if (deadConversation == 1) {
-        receivedMessage.channel.send({ files: ['https://i.imgur.com/EAKLncQ.png'] })
-    }
-    //dean holding the trenchcoat
-    if (deadConversation == 2) {
-        receivedMessage.channel.send("This is my out of office message.")
-    }
-    if (deadConversation == 3) {
-        receivedMessage.channel.send("https://www.tumblr.com/casgirlunion/700199617822916608/")
-    }
-    //the Angel slideshow
-    if (deadConversation == 4) {
-        receivedMessage.channel.send("I'm sorry, but the old Castiel can't come to the phone right now.")
-        receivedMessage.channel.send("Why? Oh.....")
-        receivedMessage.channel.send("Because he's dead. ^-^")
-    }
-    //to add with next update:     tbh creature with angel wings
-}
 })
 
 function processCommand(receivedMessage) {
@@ -253,10 +306,11 @@ function helpCommand(arguments, receivedMessage) {
             }
     }
 
-   else if (arguments == "kiss") {
+    else if (arguments == "kiss") {
     if (maternalMortality == 0) {
         receivedMessage.channel.send("Mwah! One for the road.")
     }
+
     else {
         receivedMessage.channel.send("Mwah! Don't tell Dean ;)")
         if (pegantNumerical == 0) {
@@ -274,21 +328,20 @@ function helpCommand(arguments, receivedMessage) {
         receivedMessage.channel.send("[is hold]")
     }
 
-       else if (arguments == "bite") {
-       var bite = Math.floor(Math.random() * 4)
-
-       if (bite == 0) {
-           receivedMessage.channel.send("[gets chewed on and chewed on and chewed on]")
-       }
-       if (bite == 1) {
-           receivedMessage.channel.send("Is this... 'cuteness aggression'?")
-       }
-       if (bite == 2) {
-           receivedMessage.channel.send("Don't make me get the spray bottle.")
-       }
-       if (bite == 3) {
-           receivedMessage.channel.send("Are you hungry? You could have said something sooner.")
-       }
+    else if (arguments == "bite") {
+        var bite = Math.floor(Math.random() * 4)
+        if (bite == 0) {
+            receivedMessage.channel.send("[gets chewed on and chewed on and chewed on]")
+        }
+        if (bite == 1) {
+            receivedMessage.channel.send("Is this... 'cuteness aggression'?")
+        }
+        if (bite == 2) {
+            receivedMessage.channel.send("Don't make me get the spray bottle.")
+        }
+        if (bite == 3) {
+            receivedMessage.channel.send("Are you hungry? You could have said something sooner.")
+        }
     }
 
 
@@ -356,7 +409,7 @@ function helpCommand(arguments, receivedMessage) {
      }
 
    else if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n!`cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas milkies`: join the queue to be nursed\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n`!cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas milkies`: join the queue to be nursed\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\n`!cas kittens`: Ask if I've had a litter lately.\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
     }
     
     else if (arguments == "birth") 
@@ -399,12 +452,15 @@ function helpCommand(arguments, receivedMessage) {
        var fuck = Math.floor(Math.random() * 6)
 
        if (fuck == 0) {
-        if (pegantNumerical == 0)
-        {    receivedMessage.channel.send("That's considerate of you. I've been insatiable during my pregnancy...")
-    }
+        if (pegantNumerical == 0 && pregnancyTrimester !== 1) {    
+            receivedMessage.channel.send("That's considerate of you. I've been insatiable during my pregnancy...")
+        }
+        else if (pegantNumerical == 0) {    
+            receivedMessage.channel.send("That's considerate of you. I've been insatiable lately, although I'm not sure why... Perhaps it's simply my nature.")
+        }
         else {           
             receivedMessage.channel.send("But I'm not ready to have a baby just yet...")
-       }
+        }
        }
        if (fuck == 1) {
            receivedMessage.channel.send("Alright. Which one of us is going to wear the maid outfit?")
@@ -432,66 +488,129 @@ function helpCommand(arguments, receivedMessage) {
     }
 }
 }
-   
-        else if (arguments == "baste") {
+
+else if (arguments == "cpr") {
 if (maternalMortality == 0)
 {
-    receivedMessage.channel.send("That's thoughtful of you, but... I'm feeling too sick to have another litter right now...")
-}
-else {            
-var usersend = receivedMessage.author.toString()
-if (pegantNumerical == 0)
-{
-    receivedMessage.channel.send("Thank you, " + usersend + ". I'll save this for later.")
+maternalMortality = 1;
+receivedMessage.channel.send("Amazing what humans are capable of. Thank you. I'm in your debt. \n**_Event_:** Castiel is now healthy again.");
 }
 else {
-var baste = Math.floor(Math.random() * 10)
-if (baste == 0) {
-    receivedMessage.channel.send("Modern technology can be its own miracle.")
-}
-if (baste == 1) {
-    receivedMessage.channel.send("You're suggesting that we employ a kitchen implement?")
-}
-if (baste == 2) {
-    receivedMessage.channel.send("I understand that there's a higher chance of multiples with these procedures...")
-}
-if (baste == 3) {
-    receivedMessage.channel.send("Oh........... I suppose this _is_ the most efficient method.") 
-}
-if (baste == 4) 
-{
-receivedMessage.channel.send({ files: ['https://i.imgur.com/CZ8YxGR.jpg']})
-// ^ Kitten who appears to have face-planted into a meal bowl
-}
-if (baste == 5) 
-{
-receivedMessage.channel.send({ files: ['https://i.imgur.com/M0kvqfi.png']})
-// ^ Image of a turkey baster
-}
-if (baste == 6) {
-receivedMessage.channel.send("We have to repopulate the hive.")
-}
-if (baste == 7) {
-receivedMessage.channel.send("The instructions did say to be fruitful and multiply.")
-}
-if (baste == 8) {
-receivedMessage.channel.send("If we want a garden, we're going to have to sow the seed.")
-}
-if (baste == 9) {
-receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the turkey.")
-}
-                pegantNumerical = Math.floor(Math.random() * 3);
-                casFirstTrimester(receivedMessage);
+receivedMessage.channel.send("This seems premature. I really do feel settled into my vessel today.");
 }
 }
+
+else if (arguments == "baste") {
+
+var usersend = receivedMessage.author.toString()
+
+    if (maternalMortality == 0)
+    {
+        receivedMessage.channel.send("That's thoughtful of you, but... I'm feeling too sick to have another litter right now...")
+    }
+
+
+    else if (pegantNumerical == 0 && pregnancyTrimester !== 1)  {            
+        receivedMessage.channel.send("Thank you, " + usersend + ". I'll save this for later.")
+    }
+
+    else {
+    var baste = Math.floor(Math.random() * 10)
+
+    if (baste == 0) {
+        receivedMessage.channel.send("Modern technology can be its own miracle.")
+    }
+    if (baste == 1) {
+        receivedMessage.channel.send("You're suggesting that we employ a kitchen implement?")
+    }
+    if (baste == 2) {
+        receivedMessage.channel.send("I understand that there's a higher chance of multiples with these procedures...")
+    }
+    if (baste == 3) {
+        receivedMessage.channel.send("Oh........... I suppose this _is_ the most efficient method.") 
+    }
+    if (baste == 4) 
+    {
+    receivedMessage.channel.send({ files: ['https://i.imgur.com/CZ8YxGR.jpg']})
+    // ^ Kitten who appears to have face-planted into a meal bowl
+    }
+    if (baste == 5) 
+    {
+    receivedMessage.channel.send({ files: ['https://i.imgur.com/M0kvqfi.png']})
+    // ^ Image of a turkey baster
+    }
+    if (baste == 6) {
+    receivedMessage.channel.send("We have to repopulate the hive.")
+    }
+    if (baste == 7) {
+    receivedMessage.channel.send("The instructions did say to be fruitful and multiply.")
+    }
+    if (baste == 8) {
+    receivedMessage.channel.send("If we want a garden, we're going to have to sow the seed.")
+    }
+    if (baste == 9) {
+    receivedMessage.channel.send("It's like a Friendsgiving event ... and I'm the turkey.")
+    }
+    }
+
+if (pegantNumerical !== 0) {
+    pegantNumerical = Math.floor(Math.random() * 3);
+    casFirstTrimester(receivedMessage);
 }
-    
-        else if (arguments == "womb") {
+}
+
+else if (arguments == "kittens"){
+    if (currentLitter !== undefined && currentLitter !== null) {
+
+    if (currentLitter.initialNumberOfKittens == 1)
+    {
+    receivedMessage.channel.send('Hi bestie! My current litter has just one little kitten with ' + currentLitter.hitPoints + ' hit points and ' + currentLitter.squidsDefeated + ' confirmed kills. They were born at ' + currentLitter.birthTime.toString() + ".")    
+    }
+    else if (currentLitter.initialNumberOfKittens == currentLitter.numberOfKittens) {
+    receivedMessage.channel.send('Hi bestie! My current litter has all ' + currentLitter.numberOfKittens + ' kittens remaining with ' + currentLitter.hitPoints + ' hit points and ' + currentLitter.squidsDefeated + ' confirmed kills. They were born at ' + currentLitter.birthTime.toString() + ".")    
+    }
+    else if (currentLitter.initialNumberOfKittens !== currentLitter.numberOfKittens && currentLitter.numberOfKittens == 1) {
+        receivedMessage.channel.send('Hi bestie! My current litter has just one kitten remaining from the original litter of ' + currentLitter.initialNumberOfKittens + '. Their record is ' + currentLitter.hitPoints + ' hit points and ' + currentLitter.squidsDefeated + ' confirmed kills. They were born at ' + currentLitter.birthTime.toString() + ".")    
+        }
+    else {
+    receivedMessage.channel.send('Hi bestie! My current litter has ' + currentLitter.numberOfKittens + ' kittens remaining out of the original ' + currentLitter.initialNumberOfKittens + '. Between them, they have ' + currentLitter.hitPoints + ' hit points and ' + currentLitter.squidsDefeated + ' confirmed kills. They were born at ' + currentLitter.birthTime.toString() + ".")    
+    }
+
+    if (currentLitter.hasWings == true && currentLitter.isRound == false) {
+        receivedMessage.channel.send("Their adventures have left them bewingèd.")   
+    }
+    else if (currentLitter.hasWings == true && currentLitter.isRound == true) {
+        receivedMessage.channel.send("Their adventures have left them bewingèd and round.")   
+    }
+    else if (currentLitter.hasWings == false && currentLitter.isRound == true) {
+        receivedMessage.channel.send("Their adventures have left them round.")   
+    }
+    else {
+    }
+}
+else {
+    receivedMessage.channel.send("Dean says I'm what they call an 'empty nester'. Not a single kitten about the place. \nUnless... could you help me? With my next litter?")
+}}
+
+else if (arguments == "babies"){
+    if (currentLitter !== undefined && currentLitter !== null) {
+    receivedMessage.channel.send(currentLitter.toString())    
+    }
+else {
+    receivedMessage.channel.send("Dean says I'm what they call an 'empty nester'. Unless... could you help me?")
+}}
+
+
+else if (arguments == "setLitter") {
+    casSetLitter(receivedMessage); 
+    }   
+
+    else if (arguments == "womb") {
             if (maternalMortality == 0)
             {
                 receivedMessage.channel.send("I don't think I can get pregnant right now... something feels wrong...")
             }
-            else if (pegantNumerical == 0 && pregnancyTrimester != 1) {
+            else if (pegantNumerical == 0 && pregnancyTrimester !== 1) {
                 var pregnancyAnnouncement = Math.floor(Math.random() * 7)
                 if (pregnancyAnnouncement == 0) {
                     receivedMessage.channel.send("B̷A̷B̴Y̴ ̸S̵O̶O̸N̴")
@@ -800,6 +919,7 @@ function casFirstTrimester (receivedMessage) {
         casMiscarriage(receivedMessage);
         }
     }, 360000)   
+//Use this value to reset trimester lenghts after testing
     }
 }
 
@@ -817,6 +937,7 @@ function casSecondTrimester (receivedMessage) {
         casMiscarriage(receivedMessage);
         }
     }, 360000)   
+//Use this value to reset trimester lenghts after testing 
     }
 }
 
@@ -827,21 +948,30 @@ pregnancyTrimester = 3;
 setTimeout(function(){ 
 
     if (poisonHealth == 'healthy') {
-receivedMessage.channel.send("*Event*: Castiel is in labor.");
+receivedMessage.channel.send("**_Event_:** Castiel is in labor.");
 
 var birthEvent = Math.floor(Math.random() * 8);
 
 if (birthEvent == 0) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/pFfrlqF.jpg']})
-// zo's edit of Castiel with 9 identical scrungy gray kittens 
+// zo's edit of Castiel with 9 identical scrungy gray kittens
+litterSize = 9;
+litterIsScrungy = true;
+casBirthLitter(receivedMessage); 
 receivedMessage.channel.send("I became a father. And in that, I rediscovered my faith. I rediscovered who I am.")
 }
 if (birthEvent == 1) {
 receivedMessage.channel.send("🐱🐱🐱🐱🐱🐱")
+litterSize = 6;
+litterIsScrungy = false;
+casBirthLitter(receivedMessage);
 }
 if (birthEvent == 2) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/173yDa5.jpg']})
-//Cas on a basement floor surrounded by kittens
+//Edit of Cas on a basement floor surrounded by kittens
+litterSize = 7;
+litterIsScrungy = false;
+casBirthLitter(receivedMessage);
 }
 if (birthEvent == 3) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/MdbQONt.jpg']})
@@ -854,10 +984,16 @@ receivedMessage.channel.send({ files: ['https://i.imgur.com/oDKH7Oo.png']})
 if (birthEvent == 5) {
 receivedMessage.channel.send({ files: ['https://media.tenor.com/WO7Jr4uFUXMAAAAd/kittens-cat.gif']})
 //Gif of a litter of kittens
+litterSize = 13;
+litterIsScrungy = false;
+casBirthLitter(receivedMessage);
 }
 if (birthEvent == 6) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/yXuIDZY.png']})
 //Picture of one small scrungly-looking kitten
+litterSize = 1;
+litterIsScrungy = true;
+casBirthLitter(receivedMessage);
 }
 if (birthEvent == 7) {
 receivedMessage.channel.send({ files: ['https://i.imgur.com/2Z5TCnw.png']})
@@ -871,10 +1007,12 @@ maternalMortality = Math.floor(Math.random() * 14)
 if (maternalMortality === 0) {
     setTimeout(function(){
         setTimeout(function(){
-            receivedMessage.channel.send('*Event*: Castiel has died in childbirth.')
+            if (maternalMortality === 0) {
+            receivedMessage.channel.send('**_Event_:** Castiel has died in childbirth.')
             diedInChildbirth = true;
             client.user.setActivity("so long and goodnight");
             casResurrection(receivedMessage);
+        }
         }, 120000)
 
         receivedMessage.reply("thank you. They're so beautiful. Oh, but... I do feel so weak all of a sudden...");
@@ -898,18 +1036,19 @@ else {
     setTimeout(function(){
         receivedMessage.reply("thank you.");
         pegantNumerical = 1;
-        }, 4000)
+        }, 1000)
 }
     }
     else {
         casMiscarriage(receivedMessage);
     }
 }, 360000)   
+//Use this value to reset trimester lenghts after testing
 }
 
 function casMiscarriage (receivedMessage) {
 
-    receivedMessage.channel.send("*Event*: Castiel is having a miscarriage.");
+    receivedMessage.channel.send("**_Event_:** Castiel is having a miscarriage.");
 
     var miscarriageMonologue = Math.floor(Math.random() * 3);
 
@@ -933,7 +1072,7 @@ client.user.setActivity("at empty womb hysteria.");
 pegantNumerical = 1;
 poisonHealth = 'healthy';
 pregnancyTrimester = 0;
-receivedMessage.channel.send("*Event*: Castiel is no longer pregnant. Castiel is now hysterical with grief.");
+receivedMessage.channel.send("**_Event_:** Castiel is no longer pregnant. Castiel is now hysterical with grief.");
 }, 5000)
 }
 
@@ -945,10 +1084,103 @@ function casResurrection (receivedMessage) {
             maternalMortality = 1;
             client.user.setActivity("at being a father.");
             receivedMessage.channel.send("It seems that I've recovered from my injuries.");
-            }, 660000)
+        }, 660000)
     }
 }
 
+function casBirthLitter(receivedMessage) {  
+birthChannelId = receivedMessage.channel.id.toString();
+birthServerId = receivedMessage.guild.id.toString();
+
+    if (litterSize == 1 && litterIsScrungy == true) {
+        startingHitPoints = 999;
+    }
+    if (litterSize !== 1 && litterIsScrungy == true) {
+        startingHitPoints = 9999;
+    }
+    else {
+       startingHitPoints = (litterSize * 5);
+    }
+
+        new litterSchema({
+        initialNumberOfKittens: litterSize,
+        numberOfKittens: litterSize,
+        hitPoints: startingHitPoints,
+        squidsDefeated: 0,
+        hasWings: false,
+        isRound: false,
+        litterScrunge: litterIsScrungy,
+        birthServer: birthServerId,
+        birthChannel: birthChannelId,
+        birthTime: new Date(),
+        }).save();
+    }
+
+  async function casSetLitter(receivedMessage) {    
+    currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    receivedMessage.channel.send("Hi bestie, my current litter is" + currentLitter); 
+    receivedMessage.channel.send("The number of kittens is" + currentLitter.numberOfKittens);      
+    }
+
+  async function updateSquidCount(receivedMessage) {   
+        currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+        currentLitter.squidsDefeated += 1;
+        await currentLitter.save();  
+        if (currentLitter.litterScrunge=true)
+        {
+            receivedMessage.channel.send('https://cdn.discordapp.com/attachments/1212767226772590672/1216906064998695032/engage_scrungle_in_combat.mp4?ex=66021716&is=65efa216&hm=7296fb7dec47ec47232528429a44d76473ee1e865c9e5f8daf0aad7399f14986&')
+            receivedMessage.channel.send("**_Event_:** No weapon fashioned against scrungle shall prosper. \nThe number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
+        }
+        else {
+        receivedMessage.channel.send("Yes, children, feast. \n \n**_Event_:** The number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
+        }
+        if (currentLitter.squidsDefeated > currentLitter.numberOfKittens && currentLitter.isRound == false)
+        {
+         currentLitter.isRound = true;
+         receivedMessage.channel.send("**_Event_:** The seafood around here is good eatin'. Cas' litter has grown big and round.");
+         await currentLitter.save();    
+        }
+        }
+    
+async function calculateKittenDamageInput(receivedMessage) {   
+    currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    survivingLitter = currentLitter.numberOfKittens;
+    const damageRoll = 2;
+    currentLitter.hitPoints -= damageRoll;
+    if (currentLitter.initialNumberOfKittens > 1) {
+    if (currentLitter.litterScrunge == true) {
+    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 1111));
+    }
+    else {
+    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 5));
+    }
+    }
+    else {
+    if (currentLitter.hitPoints > 0){
+        currentLitter.numberOfKittens = 1;
+    } 
+    else {
+        currentLitter.numberOfKittens = 0;    
+    }
+    }
+    receivedMessage.channel.send("**_Event_:** Aerial attack! The bunker's resident flying squids have attacked Cas' litter for " + damageRoll + " damage!"); 
+
+    if (survivingLitter > currentLitter.numberOfKittens) {
+        receivedMessage.channel.send("This life is many things, but it's rarely easy. \n**_Event_:** Castiel's litter has lost a kitten.");     
+    }
+    await currentLitter.save();
+    if (currentLitter.numberOfKittens < 1) {
+        receivedMessage.channel.send("Tragedy has struck! \n**_Event_:** Castiel's litter has no kittens remaining."); 
+        await litterSchema.deleteOne({}, {}, { sort: { birthTime: 1} });
+        currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    } 
+}
+
+async function elevateKittens(receivedMessage) {   
+    currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    currentLitter.hasWings = true;
+    await currentLitter.save();  
+}
 
 function randomspeak() {
     var talk2 = Math.floor(Math.random() * 103)
@@ -1267,5 +1499,34 @@ function randomspeak() {
 }
 
 
+async function graduateKittens() {
+// check if any kittens are more than 5 minutes old. delete if so. post graduation message.
+    currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    let currentDate = new Date;
+    
+    if (currentLitter !== undefined && currentLitter !== null) {
+        if ((currentDate - currentLitter.birthTime) > 7200000) {
+            if (currentLitter.numberOfKittens == 1 && currentLitter.initialNumberOfKittens == 1) {
+                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's one scrungly kitten may have started out small in life, but they have grown into a frighteningly large and determined wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
+            }
+            else if (currentLitter.numberOfKittens == 1) {
+                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's kitten has grown big and strong into a frighteningly large wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
+            }
+            else {
+            client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's litter of " + currentLitter.numberOfKittens + " kittens has grown big and strong into a pack of wildcats. They now are ready to prowl the Kansas wilderness in search of larger prey. \n **_Event:_** This litter has left the bunker!");
+            }
+            await litterSchema.deleteOne({}, {}, { sort: { birthTime: 1} });
+            currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+        }
+    }
+}
 
-client.login(token);
+setInterval(graduateKittens, 60000);
+
+(async () => {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to the database.");
+    currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
+    client.login(token);
+    }
+    )();
