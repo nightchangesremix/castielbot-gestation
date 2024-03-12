@@ -919,7 +919,7 @@ function casFirstTrimester (receivedMessage) {
         casMiscarriage(receivedMessage);
         }
     }, 360000)   
-//Use this value to reset trimester lenghts after testing
+//Use this value to reset trimester lengths after testing
     }
 }
 
@@ -937,7 +937,7 @@ function casSecondTrimester (receivedMessage) {
         casMiscarriage(receivedMessage);
         }
     }, 360000)   
-//Use this value to reset trimester lenghts after testing 
+//Use this value to reset trimester lengths after testing 
     }
 }
 
@@ -1043,7 +1043,7 @@ else {
         casMiscarriage(receivedMessage);
     }
 }, 360000)   
-//Use this value to reset trimester lenghts after testing
+//Use this value to reset trimester lengths after testing
 }
 
 function casMiscarriage (receivedMessage) {
@@ -1128,8 +1128,8 @@ birthServerId = receivedMessage.guild.id.toString();
         await currentLitter.save();  
         if (currentLitter.litterScrunge=true)
         {
-            receivedMessage.channel.send('https://cdn.discordapp.com/attachments/1212767226772590672/1216906064998695032/engage_scrungle_in_combat.mp4?ex=66021716&is=65efa216&hm=7296fb7dec47ec47232528429a44d76473ee1e865c9e5f8daf0aad7399f14986&')
-            receivedMessage.channel.send("**_Event_:** No weapon fashioned against scrungle shall prosper. \nThe number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
+            receivedMessage.channel.send('https://cdn.discordapp.com/attachments/1212767226772590672/1216923572778303568/engage_scrungle_in_combat.mp4?ex=66022765&is=65efb265&hm=7452c3bb9a4dd67435351401f6ddf723385b241304ca0d69820a9ae679dc0f54&')
+            receivedMessage.channel.send("**_Event_:** No weapon fashioned against Castiel's shitty baby shall prosper. \nScrungle's kill count has increased to " + currentLitter.squidsDefeated + ".")
         }
         else {
         receivedMessage.channel.send("Yes, children, feast. \n \n**_Event_:** The number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
