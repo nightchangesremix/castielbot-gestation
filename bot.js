@@ -921,7 +921,7 @@ function casFirstTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 6000)   
+    }, 360000)   
 //Use this value to reset trimester lengths after testing
     }
 }
@@ -939,7 +939,7 @@ function casSecondTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 6000)   
+    }, 360000)   
 //Use this value to reset trimester lengths after testing 
     }
 }
@@ -1045,7 +1045,7 @@ else {
     else {
         casMiscarriage(receivedMessage);
     }
-}, 6000)   
+}, 360000)   
 //Use this value to reset trimester lengths after testing
 }
 
