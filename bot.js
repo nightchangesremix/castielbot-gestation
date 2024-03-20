@@ -86,24 +86,27 @@ client.on('message', (receivedMessage) => {
         }   
         
         else if (receivedMessage.content.toLowerCase().includes('dean')) {
-            var deanCheck = /\sdean\s/i
+            var deanCheck = /^dean|[^\w]dean[^\w]|$dean|\bdean\b/i 
             if (receivedMessage.content.toLowerCase().match(deanCheck)) {  receivedMessage.channel.send("DEAN!") }
         }
         
         else if (receivedMessage.content.toLowerCase().includes('john')) {
-            receivedMessage.channel.send("Killingthatmannatural.")
+            var johnCheck = /^john|[^\w]john[^\w]|$john|\bjohn\b/i 
+            if (receivedMessage.content.toLowerCase().match(johnCheck))   { receivedMessage.channel.send("Killingthatmannatural.") }
         }
         
         else if (receivedMessage.content.toLowerCase().includes('sam')) {
-            receivedMessage.channel.send("That's my bloodfreak-in-law!")
+            var samCheck = /^sam|[^\w]sam[^\w]|$sam|\bsam\b/i 
+            if ((receivedMessage.content.toLowerCase().match(samCheck))) { receivedMessage.channel.send("That's my bloodfreak-in-law!") }
         }
 
         else if (receivedMessage.content.toLowerCase().includes('jack')) {
-            receivedMessage.channel.send("Baby boy son boy.")
+            var jackCheck = /^jack|[^\w]jack[^\w]|$jack|\bjack\b/i 
+            if ((receivedMessage.content.toLowerCase().match(jackCheck))) { receivedMessage.channel.send("Baby boy son boy.") }
         }
         
         else if (receivedMessage.content.toLowerCase().includes('chuck')) {
-            var chuckCheck = /\schuck\s/i
+            var chuckCheck = /^chuck|[^\w]chuck[^\w]|$chuck|\bchuck\b/i 
             if (receivedMessage.content.toLowerCase().match(chuckCheck)) { receivedMessage.channel.send("Fuck that guy!") }
         }
 
@@ -171,11 +174,11 @@ client.on('message', (receivedMessage) => {
                 updateSquidCount(receivedMessage); 
             }
             else {
-                receivedMessage.channel.send("**_Event_:** There's a familiar squelching noise echoing through the halls of the bunker. The alien squids must be hunting again...");
+                receivedMessage.channel.send("**_Event:_** There's a familiar squelching noise echoing through the halls of the bunker. The alien squids must be hunting again...");
             }
         }
 
-        else if (receivedMessage.content.toLowerCase().startsWith('🔫🐙🪽')) {
+        else if (receivedMessage.content.toLowerCase().startsWith('🔫🐙🪽') || receivedMessage.content.toLowerCase().startsWith('🔫 🐙 🪽')) {
         if (currentLitter !== undefined && currentLitter !== null) {
             if (currentLitter.hasWings === false) {
                 calculateKittenDamageInput(receivedMessage);
@@ -185,27 +188,27 @@ client.on('message', (receivedMessage) => {
             }
         }
         else {
-            receivedMessage.channel.send("**_Event_:** The bunker's resident flying alien squids are prowling the hallways. With no kittens living here, it doesn't seem that we'll see a skirmish...")
+            receivedMessage.channel.send("**_Event:_** The bunker's resident flying alien squids are prowling the hallways. With no kittens living here, it doesn't seem that we'll see a skirmish...")
         }
         }
         
-        else if (receivedMessage.content.toLowerCase().startsWith('😼🪽')) {
+        else if (receivedMessage.content.toLowerCase().startsWith('😼🪽') || receivedMessage.content.toLowerCase().startsWith('😼 🪽')) {
             if (currentLitter !== undefined && currentLitter !== null) {
                 if (currentLitter.hasWings == false){
                     elevateKittens(receivedMessage); 
                     if (currentLitter.initialNumberOfKittensmberOfKittens == 1){
-                    receivedMessage.channel.send("**_Event_:** Jack has performed a miracle! Cas' lone scrungly kitten now has the power of flight.");
+                    receivedMessage.channel.send("**_Event:_** Jack has performed a miracle! Cas' lone scrungly kitten now has the power of flight.");
                     }
                     else {
-                    receivedMessage.channel.send("**_Event_:** Jack has performed a miracle! Cas' litter now possesses the power of flight.");
+                    receivedMessage.channel.send("**_Event:_** Jack has performed a miracle! Cas' litter now possesses the power of flight.");
                     }
                 }
                 else {
-                    receivedMessage.channel.send("**_Event_:** This litter has already been blessed with wings, but a little extra luck couldn't hurt!");
+                    receivedMessage.channel.send("**_Event:_** This litter has already been blessed with wings, but a little extra luck couldn't hurt!");
                 }
             }
             else {
-                    receivedMessage.channel.send("**_Event_:** Jack is in the mood to perform a miracle. If only he had some younger siblings to spoil...");
+                    receivedMessage.channel.send("**_Event:_** Jack is in the mood to perform a miracle. If only he had some younger siblings to spoil...");
             }
         }                                                 
                                                         
@@ -493,7 +496,7 @@ else if (arguments == "cpr") {
 if (maternalMortality == 0)
 {
 maternalMortality = 1;
-receivedMessage.channel.send("Amazing what humans are capable of. Thank you. I'm in your debt. \n**_Event_:** Castiel is now healthy again.");
+receivedMessage.channel.send("Amazing what humans are capable of. Thank you. I'm in your debt. \n**_Event:_** Castiel is now healthy again.");
 }
 else {
 receivedMessage.channel.send("This seems premature. I really do feel settled into my vessel today.");
@@ -589,7 +592,7 @@ else if (arguments == "kittens"){
     }
 }
 else {
-    receivedMessage.channel.send("Dean says I'm what they call an 'empty nester'. Not a single kitten about the place. \nUnless... could you help me? With my next litter?")
+    receivedMessage.channel.send("I'm what Dean calls an 'empty nester'. No kittens right now. \nUnless... could you help me? With my next litter?")
 }}
 
 else if (arguments == "babies"){
@@ -597,7 +600,7 @@ else if (arguments == "babies"){
     receivedMessage.channel.send(currentLitter.toString())    
     }
 else {
-    receivedMessage.channel.send("Dean says I'm what they call an 'empty nester'. Unless... could you help me?")
+    receivedMessage.channel.send("I'm what Dean calls an 'empty nester'. No kittens right now. \nUnless... could you help me? With my next litter?")
 }}
 
 
@@ -918,7 +921,7 @@ function casFirstTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 360000)   
+    }, 6000)   
 //Use this value to reset trimester lengths after testing
     }
 }
@@ -936,7 +939,7 @@ function casSecondTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 360000)   
+    }, 6000)   
 //Use this value to reset trimester lengths after testing 
     }
 }
@@ -948,7 +951,7 @@ pregnancyTrimester = 3;
 setTimeout(function(){ 
 
     if (poisonHealth == 'healthy') {
-receivedMessage.channel.send("**_Event_:** Castiel is in labor.");
+receivedMessage.channel.send("**_Event:_** Castiel is in labor.");
 
 var birthEvent = Math.floor(Math.random() * 8);
 
@@ -1008,7 +1011,7 @@ if (maternalMortality === 0) {
     setTimeout(function(){
         setTimeout(function(){
             if (maternalMortality === 0) {
-            receivedMessage.channel.send('**_Event_:** Castiel has died in childbirth.')
+            receivedMessage.channel.send('**_Event:_** Castiel has died in childbirth.')
             diedInChildbirth = true;
             client.user.setActivity("so long and goodnight");
             casResurrection(receivedMessage);
@@ -1042,13 +1045,13 @@ else {
     else {
         casMiscarriage(receivedMessage);
     }
-}, 360000)   
+}, 6000)   
 //Use this value to reset trimester lengths after testing
 }
 
 function casMiscarriage (receivedMessage) {
 
-    receivedMessage.channel.send("**_Event_:** Castiel is having a miscarriage.");
+    receivedMessage.channel.send("**_Event:_** Castiel is having a miscarriage.");
 
     var miscarriageMonologue = Math.floor(Math.random() * 3);
 
@@ -1072,7 +1075,7 @@ client.user.setActivity("at empty womb hysteria.");
 pegantNumerical = 1;
 poisonHealth = 'healthy';
 pregnancyTrimester = 0;
-receivedMessage.channel.send("**_Event_:** Castiel is no longer pregnant. Castiel is now hysterical with grief.");
+receivedMessage.channel.send("**_Event:_** Castiel is no longer pregnant. Castiel is now hysterical with grief.");
 }, 5000)
 }
 
@@ -1096,7 +1099,7 @@ birthServerId = receivedMessage.guild.id.toString();
         startingHitPoints = 999;
     }
     if (litterSize !== 1 && litterIsScrungy == true) {
-        startingHitPoints = 9999;
+        startingHitPoints = 99999;
     }
     else {
        startingHitPoints = (litterSize * 5);
@@ -1126,18 +1129,18 @@ birthServerId = receivedMessage.guild.id.toString();
         currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
         currentLitter.squidsDefeated += 1;
         await currentLitter.save();  
-        if (currentLitter.litterScrunge=true)
+        if (currentLitter.litterScrunge == true)
         {
             receivedMessage.channel.send('https://cdn.discordapp.com/attachments/1212767226772590672/1216923572778303568/engage_scrungle_in_combat.mp4?ex=66022765&is=65efb265&hm=7452c3bb9a4dd67435351401f6ddf723385b241304ca0d69820a9ae679dc0f54&')
-            receivedMessage.channel.send("**_Event_:** No weapon fashioned against Castiel's shitty baby shall prosper. \nScrungle's kill count has increased to " + currentLitter.squidsDefeated + ".")
+            receivedMessage.channel.send("**_Event:_** No weapon fashioned against Castiel's shitty baby shall prosper. \nScrungle's kill count has increased to " + currentLitter.squidsDefeated + ".")
         }
         else {
-        receivedMessage.channel.send("Yes, children, feast. \n \n**_Event_:** The number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
+        receivedMessage.channel.send("Yes, children, feast. \n \n**_Event:_** The number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
         }
         if (currentLitter.squidsDefeated > currentLitter.numberOfKittens && currentLitter.isRound == false)
         {
          currentLitter.isRound = true;
-         receivedMessage.channel.send("**_Event_:** The seafood around here is good eatin'. Cas' litter has grown big and round.");
+         receivedMessage.channel.send("**_Event:_** The seafood around here is good eatin'. Cas' litter has grown big and round.");
          await currentLitter.save();    
         }
         }
@@ -1149,7 +1152,7 @@ async function calculateKittenDamageInput(receivedMessage) {
     currentLitter.hitPoints -= damageRoll;
     if (currentLitter.initialNumberOfKittens > 1) {
     if (currentLitter.litterScrunge == true) {
-    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 1111));
+    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 11111));
     }
     else {
     currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 5));
@@ -1163,14 +1166,14 @@ async function calculateKittenDamageInput(receivedMessage) {
         currentLitter.numberOfKittens = 0;    
     }
     }
-    receivedMessage.channel.send("**_Event_:** Aerial attack! The bunker's resident flying squids have attacked Cas' litter for " + damageRoll + " damage!"); 
+    receivedMessage.channel.send("**_Event:_** Aerial attack! The bunker's resident flying squids have attacked Cas' litter for " + damageRoll + " damage!"); 
 
     if (survivingLitter > currentLitter.numberOfKittens) {
-        receivedMessage.channel.send("This life is many things, but it's rarely easy. \n**_Event_:** Castiel's litter has lost a kitten.");     
+        receivedMessage.channel.send("This life is many things, but it's rarely easy. \n**_Event:_** Castiel's litter has lost a kitten.");     
     }
     await currentLitter.save();
     if (currentLitter.numberOfKittens < 1) {
-        receivedMessage.channel.send("Tragedy has struck! \n**_Event_:** Castiel's litter has no kittens remaining."); 
+        receivedMessage.channel.send("Tragedy has struck! \n**_Event:_** Castiel's litter has no kittens remaining."); 
         await litterSchema.deleteOne({}, {}, { sort: { birthTime: 1} });
         currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
     } 
@@ -1507,13 +1510,13 @@ async function graduateKittens() {
     if (currentLitter !== undefined && currentLitter !== null) {
         if ((currentDate - currentLitter.birthTime) > 7200000) {
             if (currentLitter.numberOfKittens == 1 && currentLitter.initialNumberOfKittens == 1) {
-                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's one scrungly kitten may have started out small in life, but they have grown into a frighteningly large and determined wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
+                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event:_** They grow up so fast! Castiel's one scrungly kitten may have started out small in life, but they have grown into a frighteningly large and determined wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
             }
             else if (currentLitter.numberOfKittens == 1) {
-                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's kitten has grown big and strong into a frighteningly large wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
+                client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event:_** They grow up so fast! Castiel's kitten has grown big and strong into a frighteningly large wildcat. They are now ready to leave the bunker in order to prowl the Kansas wilderness in search of larger prey.");
             }
             else {
-            client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event_:** They grow up so fast! Castiel's litter of " + currentLitter.numberOfKittens + " kittens has grown big and strong into a pack of wildcats. They now are ready to prowl the Kansas wilderness in search of larger prey. \n **_Event:_** This litter has left the bunker!");
+            client.guilds.get(currentLitter.birthServer).channels.get(currentLitter.birthChannel).send("**_Event:_** They grow up so fast! Castiel's litter of " + currentLitter.numberOfKittens + " kittens has grown big and strong into a pack of wildcats. They now are ready to prowl the Kansas wilderness in search of larger prey. \n**_Event:_** This litter has left the bunker!");
             }
             await litterSchema.deleteOne({}, {}, { sort: { birthTime: 1} });
             currentLitter = await litterSchema.findOne({}, {}, { sort: { birthTime: 1} });
