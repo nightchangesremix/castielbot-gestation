@@ -461,7 +461,7 @@ else if (arguments == "fingerblast") {
 
     else if (arguments == "pve") 
       {
-        receivedMessage.channel.send(receivedMessage.channel.send("Hi bestie! Here are my commands:\n`🦑`: Encounter squid. \n`🔫🐙🪽`: Encounter flying squid. \n`😼🪽`: The litter received a boon from Jack."));
+        receivedMessage.channel.send(receivedMessage.channel.send("Hi bestie! Here are my commands:\n`🦑`: Encounter squid. \n`🔫🐙🪽`: Encounter flying squid. \n`😼🪽`: The litter receives a boon from Jack."));
     } 
 
    else if (arguments == "poison") {
@@ -965,7 +965,7 @@ function casFirstTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 5000)   
+    }, 360000)   
 //Use this value to reset trimester lengths after testing
     }
 }
@@ -983,7 +983,7 @@ function casSecondTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 5000)   
+    }, 360000)   
 //Use this value to reset trimester lengths after testing 
     }
 }
@@ -1089,7 +1089,7 @@ else {
     else {
         casMiscarriage(receivedMessage);
     }
-}, 5000)   
+}, 360000)   
 //Use this value to reset trimester lengths after testing
 }
 
