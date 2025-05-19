@@ -411,13 +411,57 @@ function helpCommand(arguments, receivedMessage) {
         }
      }
 
+else if (arguments == "fingerblast") {
+    var fingerblast = Math.floor(Math.random() * 7);
+    var fingeringBanter = Math.floor(Math.random() * 2);
+    if (fingeringBanter == 0) {
+        if (receivedMessage.author.id = 'casitel') {
+    receivedMessage.channel.send('Typical Dean-Mary.')
+    }
+    else if (receivedMessage.author.id = 'hogmail.clom') {
+    receivedMessage.channel.send("Hello Cosmin my old friend.")
+    }
+    else {
+        var fingeringBanter = 1;
+    }
+    }
+    if (fingeringBanter == 1) {
+    if (fingerblast == 0) {
+        receivedMessage.channel.send("From prior experience, we should put a towel down for this.")
+    }
+    if (fingerblast == 1) {
+        receivedMessage.channel.send("Oh no, I’m gushing!!!")
+    }
+    if (fingerblast == 2) {
+        receivedMessage.channel.send("The human hand contains thirty-four muscles.")
+    }
+    if (fingerblast == 3) {
+        receivedMessage.channel.send("😊😊")
+    }
+    if (fingerblast == 4) {
+    receivedMessage.channel.send("I can't promise you the hand back.")
+    }
+    if (fingerblast == 5) {
+    receivedMessage.channel.send("Like Jim Henson and Ernie, as Dean would say.")
+    }
+    if (fingerblast == 6) {
+    receivedMessage.channel.send("😑")
+    }
+    }
+}
+
    else if (arguments == "help") {
-        receivedMessage.channel.send("Hi bestie! Here are my commands:\n`!cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas milkies`: join the queue to be nursed\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fuck`: Exactly what it sounds like\n`!cas baste`: Apply the miracles of modern science\n`!cas womb`: Check to see if I am expecting a litter\n`!cas kittens`: Ask if I've had a litter lately.\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
+        receivedMessage.channel.send("Hi bestie! Here are my commands:\n`!cas talk`: get a random Cas quote from canon\n`!cas speak`: get me to say something funny\n`!cas bde`: measure your big dick energy\n`!cas bhe`: measure your big hole energy\n`!cas valid`: learn how valid you are, objectively\n`!cas death`: learn the exact date and time of your own death\n`!cas hug`: give me a hug\n`!cas kiss`: give me a kiss\n`!cas hold`: hold me\n`!cas feel`: learn how I'm feeling\n`!cas bite`: apply teeth\n`!cas milkies`: join the queue to be nursed\n`!cas lobotomy`: become Naomi-coded\n`!cas poison`: take care of me\n`!cas fingerblast`: engage in digital penetration\n`!cas fuck`: exactly what it sounds like\n`!cas baste`: apply the miracles of modern science\n`!cas womb`: check to see if I'm expecting a litter\n`!cas kittens`: ask if I've had a litter lately.\nYou can also make me say anything you want by typing `'cas say,'` get my opinions by asking `'cas what do you think,'` and I respond to my own name (plus a few others)!")
     }
     
     else if (arguments == "birth") 
       {
         receivedMessage.channel.send({ files: ['https://i.imgur.com/kANqts7.jpg'] })
+    } 
+
+    else if (arguments == "pve") 
+      {
+        receivedMessage.channel.send(receivedMessage.channel.send("Hi bestie! Here are my commands:\n`🦑`: Encounter squid. \n`🔫🐙🪽`: Encounter flying squid. \n`😼🪽`: The litter received a boon from Jack."));
     } 
 
    else if (arguments == "poison") {
@@ -921,7 +965,7 @@ function casFirstTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 360000)   
+    }, 5000)   
 //Use this value to reset trimester lengths after testing
     }
 }
@@ -939,7 +983,7 @@ function casSecondTrimester (receivedMessage) {
         else {
         casMiscarriage(receivedMessage);
         }
-    }, 360000)   
+    }, 5000)   
 //Use this value to reset trimester lengths after testing 
     }
 }
@@ -1045,7 +1089,7 @@ else {
     else {
         casMiscarriage(receivedMessage);
     }
-}, 360000)   
+}, 5000)   
 //Use this value to reset trimester lengths after testing
 }
 
@@ -1098,8 +1142,8 @@ birthServerId = receivedMessage.guild.id.toString();
     if (litterSize == 1 && litterIsScrungy == true) {
         startingHitPoints = 999;
     }
-    if (litterSize !== 1 && litterIsScrungy == true) {
-        startingHitPoints = 99999;
+    else if (litterSize !== 1 && litterIsScrungy == true) {
+        startingHitPoints = 9999;
     }
     else {
        startingHitPoints = (litterSize * 5);
@@ -1132,7 +1176,12 @@ birthServerId = receivedMessage.guild.id.toString();
         if (currentLitter.litterScrunge == true)
         {
             receivedMessage.channel.send('https://cdn.discordapp.com/attachments/1212767226772590672/1216923572778303568/engage_scrungle_in_combat.mp4?ex=66022765&is=65efb265&hm=7452c3bb9a4dd67435351401f6ddf723385b241304ca0d69820a9ae679dc0f54&')
-            receivedMessage.channel.send("**_Event:_** No weapon fashioned against Castiel's shitty baby shall prosper. \nScrungle's kill count has increased to " + currentLitter.squidsDefeated + ".")
+        if (currentLitter.numberOfKittens == 1) {
+        receivedMessage.channel.send("**_Event:_** No weapon fashioned against Castiel's shitty baby shall prosper. \nScrungle's kill count has increased to " + currentLitter.squidsDefeated + ".")
+        }
+        else {
+        receivedMessage.channel.send("**_Event:_** No weapon fashioned against Castiel's shitty babies shall prosper. \nThe many Scrungles' kill count has increased to " + currentLitter.squidsDefeated + ".")
+        }
         }
         else {
         receivedMessage.channel.send("Yes, children, feast. \n \n**_Event:_** The number of squids defeated by this litter is now " + currentLitter.squidsDefeated + ".")
@@ -1152,7 +1201,7 @@ async function calculateKittenDamageInput(receivedMessage) {
     currentLitter.hitPoints -= damageRoll;
     if (currentLitter.initialNumberOfKittens > 1) {
     if (currentLitter.litterScrunge == true) {
-    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 11111));
+    currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 1111));
     }
     else {
     currentLitter.numberOfKittens = (Math.ceil(currentLitter.hitPoints / 5));
