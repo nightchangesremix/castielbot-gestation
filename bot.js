@@ -412,39 +412,60 @@ function helpCommand(arguments, receivedMessage) {
      }
 
 else if (arguments == "fingerblast") {
-    var fingerblast = Math.floor(Math.random() * 7);
+    var fingerblastDialogue = Math.floor(Math.random() * 7);
     var fingeringBanter = Math.floor(Math.random() * 2);
+
     if (fingeringBanter == 0) {
-        if (receivedMessage.author.id = 'casitel') {
+        if (receivedMessage.author.id == 662099765357576200) {
     receivedMessage.channel.send('Typical Dean-Mary.')
     }
-    else if (receivedMessage.author.id = 'hogmail.clom') {
+    else if (receivedMessage.author.id == 263627542928293898) {
     receivedMessage.channel.send("Hello Cosmin my old friend.")
     }
     else {
-        var fingeringBanter = 1;
+            if (fingerblastDialogue == 0) {
+        receivedMessage.channel.send("From prior experience, we should put a towel down for this.")
+    }
+    if (fingerblastDialogue == 1) {
+        receivedMessage.channel.send("Oh no, I’m gushing!!!")
+    }
+    if (fingerblastDialogue == 2) {
+        receivedMessage.channel.send("The human hand contains thirty-four muscles.")
+    }
+    if (fingerblastDialogue == 3) {
+        receivedMessage.channel.send("😊😊")
+    }
+    if (fingerblastDialogue == 4) {
+    receivedMessage.channel.send("I can't promise you the hand back.")
+    }
+    if (fingerblastDialogue == 5) {
+    receivedMessage.channel.send("Like Jim Henson and Ernie, as Dean would say.")
+    }
+    if (fingerblastDialogue == 6) {
+    receivedMessage.channel.send("😑")
+    }
     }
     }
     if (fingeringBanter == 1) {
-    if (fingerblast == 0) {
+    if (fingerblastDialogue == 0) {
         receivedMessage.channel.send("From prior experience, we should put a towel down for this.")
     }
-    if (fingerblast == 1) {
+    if (fingerblastDialogue == 1) {
         receivedMessage.channel.send("Oh no, I’m gushing!!!")
     }
-    if (fingerblast == 2) {
+    if (fingerblastDialogue == 2) {
         receivedMessage.channel.send("The human hand contains thirty-four muscles.")
     }
-    if (fingerblast == 3) {
+    if (fingerblastDialogue == 3) {
         receivedMessage.channel.send("😊😊")
     }
-    if (fingerblast == 4) {
+    if (fingerblastDialogue == 4) {
     receivedMessage.channel.send("I can't promise you the hand back.")
     }
-    if (fingerblast == 5) {
+    if (fingerblastDialogue == 5) {
     receivedMessage.channel.send("Like Jim Henson and Ernie, as Dean would say.")
     }
-    if (fingerblast == 6) {
+    if (fingerblastDialogue == 6) {
     receivedMessage.channel.send("😑")
     }
     }
